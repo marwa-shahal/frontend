@@ -1,18 +1,12 @@
-/* @charset "UTF-8";
-@font-face {
-  font-family: "Orkney";
-  src: url("./");
-  src: local("☺"), url("../fonts/Orkney-Regular.otf") format("otf"),
-    url("../fonts/Orkney-Medium.otf") format("otf"),
-    url("../fonts/Orkney-Bold.otf") format("otf");
-} */
+@import url("https://fonts.cdnfonts.com/css/gyahegi");
+@import url("https://fonts.cdnfonts.com/css/urw-geometric");
 :root {
   --Primary: #031424;
   --light: #fdfeff;
   --Secandary: #30415d;
   --cta: #7f39fb;
   --cta_padding: 12px 24px;
-  --font: "Orkney";
+  --font: "URW Geometric", sans-serif;
 }
 
 *,
@@ -28,16 +22,15 @@
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
 }
 .header .container {
-  margin: auto 156px;
+  margin: auto 250px;
 }
 .header .container .navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 90px;
+  height: 100px;
 }
 .header .container .navigation .brand {
   width: 90px;
@@ -62,13 +55,36 @@
   /* text-transform: uppercase; */
   font-family: var(--font);
 }
-.header .container .navigation .user a {
+.header .container .navigation .user{
+display:flex;
+gap:10px;
+}
+.header .container .navigation .user .register a {
   padding: 10px 15px;
   background: black;
   color: white;
+  border: 1px solid black;
   text-decoration: none;
   font-family: var(--font);
 }
+
+.header .container .navigation .user .register a:hover {
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.header .container .navigation .user .login a {
+  padding: 10px 15px;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: var(--font);
+}
+
+
 .header .container .hero {
   padding-top: 70px;
 }
@@ -96,8 +112,13 @@
   border: none;
 } /*# sourceMappingURL=style.css.map */
 .hidden {
-    display: none;
-  }
+  display: none;
+}
+.brandLink {
+  font-family: "Gyahegi", sans-serif;
+  text-decoration: none;
+  color:black
+}
 @media only screen and (max-width: 800px) {
   .header .nav {
     padding: 1rem 2rem;
