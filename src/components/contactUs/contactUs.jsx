@@ -14,8 +14,8 @@ function ContactUs() {
     <div className={Classes.contactUs}>
       <div className={Classes.contactWrapper}>
         <section className={Classes.getInTouch}>
-          <p className={Classes.contactTitle}>Contact</p>
-          <p>Don't hesitate, get in contact with us.</p>
+          <p className={Classes.contactTitle}>Contact Us</p>
+          <p className={Classes.contactPar}>Don't hesitate, get in contact with us.</p>
           <form className={`${Classes["contact-form"]} ${Classes.row}`} onSubmit={handleSubmit(onSubmit)}>
             <div
               className={`${Classes["form-field"]} ${Classes.col} ${Classes["x-50"]}`}

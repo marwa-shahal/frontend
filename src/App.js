@@ -9,6 +9,7 @@ import JobNews from "./pages/JobNews/JobNews";
 import EventsWebinars from "./pages/EventsWebinars/EventsWebinars";
 import Registration from "./pages/Registration/Registration";
 import Login from "./pages/Registration/Login";
+import Profile from "./pages/Profile/Profile";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/register" element={<Registration />} />
         <Route path="/login" element={<Login />} />
         <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>
   );

@@ -4,7 +4,6 @@
   /* margin: 50px auto; */
   text-align: center;
   position: relative;
-  margin-top: 20px;
 }
 
 #multistepsform fieldset {
@@ -192,7 +191,7 @@
 p {
   font-family: "URW Geometric", sans-serif;
 }
-.RegisterWrapper{
+.RegisterWrapper {
   background: white;
   border: 0 none;
   padding: 20px 15px;
@@ -200,4 +199,54 @@ p {
   width: 80%;
   margin: 0 10%;
   position: relative;
+}
+
+.RegisterAs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.RegisterUser,
+.RegisterTeacher {
+  font-family: "URW Geometric", sans-serif;
+  font-size: 16px;
+  margin: 0px 5px 30px 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+
+.RegisterActive {
+  font-size: 16px;
+  margin: 0px 5px 30px 5px;
+  padding-bottom: 5px;
+  color: #ec663e;
+  border-bottom: 3px solid #ec663e;
+  cursor: pointer;
+}
+
+.firstlastNameWrapper {
+  display: flex;
+}
+
+.firstlastNameWrapper .fs-input {
+  margin-bottom: 2px;
+}
+
+@media only screen and (max-width: 1080px) {
+  .RegisterImage {
+    display: none;
+  }
+  .RegisterContainer {
+    display: block;
+  }
+  #multistepsform {
+    width: 600px;
+    margin: 0 auto;
+    /* margin: 50px auto; */
+    text-align: center;
+    position: relative;
+  }
 }
