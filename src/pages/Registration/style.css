@@ -1,0 +1,379 @@
+#multistepsform {
+  width: 600px;
+  /* margin: 0 auto; */
+  /* margin: 50px auto; */
+  text-align: center;
+  position: relative;
+}
+
+#multistepsform fieldset {
+  background: white;
+  border: 0 none;
+  /* box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); */
+  padding: 20px 15px;
+  box-sizing: border-box;
+  width: 80%;
+  margin: 0 10%;
+  position: relative;
+}
+
+#multistepsform fieldset:not(:first-of-type) {
+  display: none;
+}
+#multistepsform select,
+#multistepsform input,
+#multistepsform textarea {
+  height: 36px;
+  background-color: white;
+  border-width: 0 0 2px 0;
+  border-color: #000;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: "URW Geometric", sans-serif;
+}
+input:-webkit-autofill {
+  background-color: white !important;
+}
+#multistepsform select {
+  width: 200px;
+}
+#multistepsform input,
+#multistepsform textarea {
+  width: 100%;
+}
+#multistepsform select:focus,
+#multistepsform input:focus,
+#multistepsform textarea:focus {
+  /* border-color: #679b9b; */
+  outline: none;
+  color: #637373;
+}
+
+#multistepsform .action-button {
+  width: 100px;
+  font-family: "URW Geometric", sans-serif;
+  background: #ec663e;
+  font-weight: bold;
+  color: #fff;
+  /* transition: 150ms; */
+  border: 0 none;
+  border-radius: 1px;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px 15px;
+  margin: 10px 15px;
+}
+
+#multistepsform .fs-title {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: "Gyahegi", sans-serif;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+#multistepsform .fs-subtitle {
+  font-weight: normal;
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 20px;
+  font-family: "URW Geometric", sans-serif;
+}
+
+#progressbar {
+  margin-bottom: 30px;
+  overflow: hidden;
+  counter-reset: step;
+}
+
+#progressbar li {
+  list-style-type: none;
+  color: black;
+  text-transform: uppercase;
+  font-size: 9px;
+  width: calc(100% / 4);
+  float: left;
+  position: relative;
+}
+
+#progressbar li:before {
+  content: counter(step);
+  counter-increment: step;
+  width: 20px;
+  line-height: 20px;
+  display: block;
+  font-size: 10px;
+  color: #fff;
+  background: black;
+  margin: 0 auto 5px auto;
+}
+
+#progressbar li:after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: black;
+  position: absolute;
+  left: -50%;
+  top: 9px;
+  z-index: -1;
+}
+
+#progressbar li:first-child:after {
+  content: none;
+}
+
+#progressbar li.active {
+  color: #ec663e;
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+  background: #ec663e;
+  color: white;
+}
+
+.fs-input {
+  position: relative;
+  margin: 30px 5px 2px 5px;
+  padding: 5px;
+}
+
+.fs-label {
+  position: absolute;
+  left: 2px;
+  /* bottom: 11px; */
+  font-family: Lusitana, serif;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+  color: #888;
+  cursor: text;
+  transition: transform 0.2s ease-in-out;
+  transform: translateY(-24px);
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  /* gap: 5px; */
+  /* justify-content: space-between; */
+}
+.address {
+  display: flex;
+  gap: 5;
+}
+.RegisterContainer {
+  display: flex;
+  max-width: 1200px;
+  /* margin: 0 auto; */
+  margin: 50px auto;
+  gap: 5px;
+}
+
+.RegisterImage {
+  position: relative;
+  width: 500px;
+  height: 70vh;
+}
+.RegisterImage .RegisterImage1 {
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 0 0 50% 0;
+  object-fit: cover;
+}
+
+.RegisterImage .RegisterImage2 {
+  width: 80%;
+  height: 80%;
+  top: 100px;
+  left: 100px;
+  object-fit: cover;
+  position: absolute;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 50% 0 0 0;
+}
+p {
+  font-family: "URW Geometric", sans-serif;
+}
+.RegisterWrapper {
+  background: white;
+  border: 0 none;
+  padding: 20px 15px;
+  box-sizing: border-box;
+  width: 80%;
+  margin: 0 10%;
+  position: relative;
+}
+
+.RegisterAs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.RegisterUser,
+.RegisterTeacher {
+  font-family: "URW Geometric", sans-serif;
+  font-size: 16px;
+  margin: 0px 5px 30px 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+
+.RegisterActive {
+  font-size: 16px;
+  margin: 0px 5px 30px 5px;
+  padding-bottom: 5px;
+  color: #ec663e;
+  border-bottom: 3px solid #ec663e;
+  cursor: pointer;
+}
+
+.firstlastNameWrapper {
+  display: flex;
+}
+
+.firstlastNameWrapper .fs-input {
+  margin-bottom: 2px;
+}
+
+@media only screen and (max-width: 1080px) {
+  .RegisterImage {
+    display: none;
+  }
+  .RegisterContainer {
+    display: block;
+  }
+  #multistepsform {
+    width: 600px;
+    margin: 0 auto;
+    /* margin: 50px auto; */
+    text-align: center;
+    position: relative;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.dropdown {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.dropdown .dropdown-list {
+  padding: 25px 20px;
+  background: #fff;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  max-height: 223px;
+  overflow-y: auto;
+  background: #fff;
+  display: none;
+  z-index: 10;
+}
+
+.dropdown .checkbox {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.dropdown .dropdown-label {
+  display: block;
+  height: 44px;
+  font-size: 16px;
+  line-height: 42px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 0 40px 0 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.dropdown .dropdown-label:before {
+  content: "▼";
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.25s;
+  transform-origin: center center;
+}
+
+.dropdown.open .dropdown-list {
+  display: block;
+}
+
+.dropdown.open .checkbox {
+  transition: 2s opacity 2s;
+  opacity: 1;
+}
+
+.dropdown.open .dropdown-label:before {
+  transform: translateY(-50%) rotate(-180deg);
+}
+
+.checkbox {
+  margin-bottom: 20px;
+}
+
+.checkbox:last-child {
+  margin-bottom: 0;
+}
+
+.checkbox .checkbox-custom {
+  display: none;
+}
+
+.checkbox .checkbox-custom-label {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.checkbox .checkbox-custom + .checkbox-custom-label:before {
+  content: "";
+  background: transparent;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  text-align: center;
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  margin-top: -2px;
+}
+
+.checkbox .checkbox-custom:checked + .checkbox-custom-label:after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  height: 4px;
+  padding: 2px;
+  transform: rotate(45deg);
+  text-align: center;
+  border: solid #000;
+  border-width: 0 2px 2px 0;
+}
+
+.checkbox .checkbox-custom-label {
+  line-height: 16px;
+  font-size: 16px;
+  margin-right: 0;
+  margin-left: 0;
+  color: black;
+}
