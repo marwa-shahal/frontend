@@ -9,16 +9,21 @@ const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   console.log("user",user)
   const signUp = async (data) => {
+    console.log("user",data)
+    const headers = {
+      "Content-Type": "multipart/form-data",
+    };
+
     try {
       const response = await axios.post(
-        "http://localhost:5000/user/signup",
-        {...data, isValid:false, role:"User"}
+        "http://localhost:5000/user/signup", {...data}, headers
       );
 
       if (response.status === 201) {
         console.log(response)
         const newUser = response.data.user;
         setUser(newUser);
+        navigate("/login");
       } else {
         throw new Error("Sign-up failed");
       }
