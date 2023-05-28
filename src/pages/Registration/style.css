@@ -1,5 +1,5 @@
 #multistepsform {
-  width: 600px;
+  /* width: 600px; */
   /* margin: 0 auto; */
   /* margin: 50px auto; */
   text-align: center;
@@ -25,8 +25,8 @@
 #multistepsform textarea {
   height: 36px;
   background-color: white;
-  border-width: 0 0 2px 0;
-  border-color: #000;
+  border-width: 0 0 1px 0;
+  /* border-color: #000; */
   font-size: 18px;
   font-weight: 400;
   font-family: "URW Geometric", sans-serif;
@@ -34,12 +34,16 @@
 input:-webkit-autofill {
   background-color: white !important;
 }
-#multistepsform select {
-  width: 200px;
-}
+
 #multistepsform input,
 #multistepsform textarea {
   width: 100%;
+}
+#multistepsform select {
+  width: 245px;
+}
+#multistepsform .address input{
+  width: 245px;
 }
 #multistepsform select:focus,
 #multistepsform input:focus,
@@ -91,7 +95,7 @@ input:-webkit-autofill {
   color: black;
   text-transform: uppercase;
   font-size: 9px;
-  width: calc(100% / 4);
+  width: calc(100% / 3);
   float: left;
   position: relative;
 }
@@ -161,7 +165,9 @@ input:-webkit-autofill {
 }
 .address {
   display: flex;
-  gap: 5;
+  /* flex-wrap: wrap; */
+  width: 100%;
+
 }
 .RegisterContainer {
   display: flex;
@@ -208,6 +214,7 @@ p {
   width: 80%;
   margin: 0 10%;
   position: relative;
+
 }
 
 .RegisterAs {
@@ -216,6 +223,9 @@ p {
   justify-content: center;
   gap: 10px;
   margin-bottom: 20px;
+  margin-right:auto;
+  margin-left: auto;
+  text-align: center;
 }
 .RegisterUser,
 .RegisterTeacher {
@@ -226,7 +236,9 @@ p {
   border-bottom: 1px solid black;
   cursor: pointer;
 }
-
+.RegisterForm{
+  width: 600px
+}
 .RegisterActive {
   font-size: 16px;
   margin: 0px 5px 30px 5px;
@@ -238,35 +250,69 @@ p {
 
 .firstlastNameWrapper {
   display: flex;
+  width: 100%;
+}
+
+
+#multistepsform .firstlastNameWrapper  input{
+  width: 245px;
 }
 
 .firstlastNameWrapper .fs-input {
   margin-bottom: 2px;
 }
-
+.RegisterForm{
+  width:700px
+}
 @media only screen and (max-width: 1080px) {
   .RegisterImage {
     display: none;
   }
   .RegisterContainer {
     display: block;
+    max-width: 100%;
   }
   #multistepsform {
-    width: 600px;
+    /* width: 600px; */
+    width:100%;
     margin: 0 auto;
     /* margin: 50px auto; */
     text-align: center;
     position: relative;
   }
+  .RegisterForm {
+    width: 100%;
+}
+#multistepsform fieldset{
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+}
+.address{
+  display: block;
+}
+#multistepsform .address input,
+#multistepsform select{
+  width:100%
+}
 }
 
 * {
   box-sizing: border-box;
 }
 
+#multistepsform #img-upload{
+  font-family: "URW Geometric", sans-serif;
+/* margin:5px; */
+font-size: 16px;
+padding:10px 15px 15px 0px;
+  /* display:inline-block;
+  margin-bottom:15px; */
+}
+
 .dropdown {
   position: relative;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .dropdown .dropdown-list {
@@ -295,8 +341,9 @@ p {
   font-size: 16px;
   line-height: 42px;
   background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0);
   padding: 0 40px 0 20px;
+  margin-top: 10px;
   cursor: pointer;
   position: relative;
 }

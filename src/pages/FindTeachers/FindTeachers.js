@@ -17,7 +17,6 @@ function FindTeachers() {
     description:
       "Experienced math teacher passionate about helping students excel.",
     reviews: 4.5,
-    price: 30,
   };
   const countries = [
     "Country 1",

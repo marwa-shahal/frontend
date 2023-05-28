@@ -6,13 +6,27 @@ import AuthContext from "../../context/AuthContext";
 
 const Registration = () => {
   const { signUp } = useContext(AuthContext);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = async (data) => {
+    let userData;
     console.log(data);
+    if (userRegistration === "teacher") {
+      userData = {
+        ...data,
+        // description:data.description,
+        languages: result,
+        isValid: false,
+        role: "Teacher",
+      };
+    }
+    if (userRegistration === "user") {
+      userData = { ...data, isValid: false, role: "User" };
+    }
     try {
-      console.log("signup", data);
-      await signUp(data);
+      console.log("signup", userData);
+      await signUp(userData);
+      reset();
     } catch (error) {
       console.error("Signup failed:", error.message);
     }
@@ -152,27 +166,29 @@ const Registration = () => {
             <h2 className="fs-title">Personal Details</h2>
             <h3 className="fs-subtitle">We will never sell it</h3>
             <div className="form">
-              <div className="fs-input">
-                <input
-                  type="text"
-                  name="first_name"
-                  {...register("first_name", { required: true })}
-                />
-                <label className="fs-label" htmlFor="fname">
-                  First Name
-                </label>
-              </div>
-              <div className="fs-input">
-                <input
-                  type="text"
-                  name="last_name"
-                  {...register("last_name", { required: true })}
-                />
-                <label className="fs-label" htmlFor="lname">
-                  Last Name
-                </label>
-              </div>
               <div className="address">
+                <div className="fs-input">
+                  <input
+                    type="text"
+                    name="first_name"
+                    {...register("first_name", { required: true })}
+                  />
+                  <label className="fs-label" htmlFor="fname">
+                    First Name
+                  </label>
+                </div>
+                <div className="fs-input">
+                  <input
+                    type="text"
+                    name="last_name"
+                    {...register("last_name", { required: true })}
+                  />
+                  <label className="fs-label" htmlFor="lname">
+                    Last Name
+                  </label>
+                </div>
+              </div>
+              <div className="firstlastNameWrapper">
                 <div className="fs-input">
                   {/* <textarea name="address"></textarea> */}
                   <select name="country" {...register("country")}>
@@ -204,10 +220,17 @@ const Registration = () => {
                 </div>
               </div>
               <div className="fs-input">
-                <input
-                  type="text"
+                {/* <input
+                  type="email"
                   name=" contact_person_email"
                   {...register(" contact_person_email", { required: true })}
+                /> */}
+                <input
+                  type="email"
+                  name="contact_person_email"
+                  {...register("contact_person_email", {
+                    required: "Contact person email is required",
+                  })}
                 />
                 <label className="fs-label" htmlFor="email">
                   Contact Email
@@ -215,11 +238,36 @@ const Registration = () => {
               </div>
 
               <div className="fs-input">
-                <input type="text" name="phone" />
+                <input
+                  type="text"
+                  name="contact_person_phone"
+                  {...register("contact_person_phone", { required: true })}
+                />
                 <label className="fs-label" htmlFor="phone">
                   Phone number (optional)
                 </label>
               </div>
+              {/* <div className="fs-input"> */}
+                {/* <input type="text" name="lang" />  */}
+                {/* <input
+                  type="file"
+                  accept="image/*"
+                  id="img-upload"
+                  name="image"
+                  required
+                  {...register("image")}
+                /> */}
+                {/* <input
+                  type="file"
+                  accept="image/*"
+                  id="img-upload"
+                  required
+                  {...register("image")}
+                />
+                <label className="fs-label" htmlFor="lang">
+                  Upload profile picture
+                </label>
+              </div> */}
             </div>
             <input
               type="button"
@@ -241,113 +289,102 @@ const Registration = () => {
         return (
           <fieldset>
             <h2 className="fs-title">Education</h2>
-            <h3 className="fs-subtitle">Your Eduaction</h3>
+            <h3 className="fs-subtitle">Your Education</h3>
             <div className="fs-input">
-              <input type="text" name="facebook" />
-              <label className="fs-label" htmlFor="lang">
-                Certificates
+              <input
+                type="text"
+                name="education"
+                {...register("education", { required: true })}
+              />
+              <label className="fs-label" htmlFor="eduaction">
+                Education Status
               </label>
             </div>
             <div className="fs-input">
-              <input type="text" name="gplus" />
-              <label className="fs-label" htmlFor="lang">
+              <input
+                type="text"
+                name="description"
+                {...register("description", { required: true })}
+              />
+              <label className="fs-label" htmlFor="description">
                 Short Description
               </label>
             </div>
-            {/* <div className="fs-input">
-              <input type="text" name="lang" />
-              <label className="fs-label" htmlFor="lang">
+            <div className="fs-input">
+              {/* <input type="text" name="lang" /> */}
+              <label className="fs-label" htmlFor="languages">
                 Languages spoken
               </label>
-            </div> */}
+              <div className={`dropdown ${isOpen ? "open" : ""}`}>
+                <label className="dropdown-label" onClick={handleDropdownClick}>
+                  {updateStatus()}
+                </label>
 
-            <div className={`dropdown ${isOpen ? "open" : ""}`}>
-              <label className="dropdown-label" onClick={handleDropdownClick}>
-                {updateStatus()}
-              </label>
-
-              <div className="dropdown-list">
-                <div className="checkbox">
-                  <input
-                    type="checkbox"
-                    name="dropdown-group-all"
-                    className="check-all checkbox-custom"
-                    id="checkbox-main"
-                    onChange={handleCheckAllChange}
-                  />
-                  <label
-                    htmlFor="checkbox-main"
-                    className="checkbox-custom-label"
-                  >
-                    Selection All
-                  </label>
-                </div>
-
-                <div className="checkbox">
-                  <input
-                    type="checkbox"
-                    name="dropdown-group"
-                    className="check checkbox-custom"
-                    id="checkbox-custom_01"
-                    onChange={handleCheckboxChange}
-                  />
-                  <label
-                    htmlFor="checkbox-custom_01"
-                    className="checkbox-custom-label"
-                  >
-                    Selection 1
-                  </label>
-                </div>
-
-                <div className="checkbox">
-                  <input
-                    type="checkbox"
-                    name="dropdown-group"
-                    className="check checkbox-custom"
-                    id="checkbox-custom_02"
-                    onChange={handleCheckboxChange}
-                  />
-                  <label
-                    htmlFor="checkbox-custom_02"
-                    className="checkbox-custom-label"
-                  >
-                    Selection 2
-                  </label>
-                </div>
-
-                <div className="checkbox">
-                  <input
-                    type="checkbox"
-                    name="dropdown-group"
-                    className="check checkbox-custom"
-                    id="checkbox-custom_03"
-                    onChange={handleCheckboxChange}
-                  />
-                  <label
-                    htmlFor="checkbox-custom_03"
-                    className="checkbox-custom-label"
-                  >
-                    Selection 3
-                  </label>
-                </div>
-
-                <div className="checkbox">
-                  <input
-                    type="checkbox"
-                    name="dropdown-group"
-                    className="check checkbox-custom"
-                    id="checkbox-custom_04"
-                    onChange={handleCheckboxChange}
-                  />
-                  <label
-                    htmlFor="checkbox-custom_04"
-                    className="checkbox-custom-label"
-                  >
-                    Selection 4
-                  </label>
+                <div className="dropdown-list">
+                  <div className="checkbox">
+                    <input
+                      type="checkbox"
+                      name="dropdown-group-all"
+                      className="check-all checkbox-custom"
+                      id="checkbox-main"
+                      onChange={handleCheckAllChange}
+                    />
+                    <label
+                      htmlFor="checkbox-main"
+                      className="checkbox-custom-label"
+                    >
+                      Selection All
+                    </label>
+                  </div>
+                  <div className="checkbox">
+                    <input
+                      type="checkbox"
+                      name="dropdown-group"
+                      className="check checkbox-custom"
+                      id="checkbox-custom_01"
+                      onChange={handleCheckboxChange}
+                    />
+                    <label
+                      htmlFor="checkbox-custom_01"
+                      className="checkbox-custom-label"
+                    >
+                      Arabic
+                    </label>
+                  </div>
+                  <div className="checkbox">
+                    <input
+                      type="checkbox"
+                      name="dropdown-group"
+                      className="check checkbox-custom"
+                      id="checkbox-custom_02"
+                      onChange={handleCheckboxChange}
+                    />
+                    <label
+                      htmlFor="checkbox-custom_02"
+                      className="checkbox-custom-label"
+                    >
+                      English
+                    </label>
+                  </div>
+                  <div className="checkbox">
+                    <input
+                      type="checkbox"
+                      name="dropdown-group"
+                      className="check checkbox-custom"
+                      id="checkbox-custom_03"
+                      onChange={handleCheckboxChange}
+                    />
+                    <label
+                      htmlFor="checkbox-custom_03"
+                      className="checkbox-custom-label"
+                    >
+                      French
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
+
             <input
               type="button"
               name="previous"
@@ -355,25 +392,13 @@ const Registration = () => {
               value="Previous"
               onClick={previousStep}
             />
-            <input
+            {/* <input
               type="button"
               name="next"
               className="next action-button"
               value="Next"
               onClick={nextStep}
-            />
-          </fieldset>
-        );
-      case 4:
-        return (
-          <fieldset>
-            <input
-              type="button"
-              name="previous"
-              className="previous action-button"
-              value="Previous"
-              onClick={previousStep}
-            />
+            /> */}
             <input
               type="submit"
               name="submit"
@@ -382,6 +407,24 @@ const Registration = () => {
             />
           </fieldset>
         );
+      // case 4:
+      //   return (
+      //     <fieldset>
+      //       <input
+      //         type="button"
+      //         name="previous"
+      //         className="previous action-button"
+      //         value="Previous"
+      //         onClick={previousStep}
+      //       />
+      //       <input
+      //         type="submit"
+      //         name="submit"
+      //         className="submit action-button"
+      //         value="Signup"
+      //       />
+      //     </fieldset>
+      //   );
       default:
         return null;
     }
@@ -399,7 +442,7 @@ const Registration = () => {
           src="https://itspaks.com/wp-content/uploads/2023/01/JIP0003600-768x512.jpg"
         />
       </div>
-      <div>
+      <div className="RegisterForm">
         <div className="RegisterAs">
           <div
             className={
@@ -422,12 +465,12 @@ const Registration = () => {
         </div>
         {userRegistration === "teacher" ? (
           <>
-            <form id="multistepsform" onSubmit={handleSubmit}>
+            <form id="multistepsform" onSubmit={handleSubmit(onSubmit)}>
               <ul id="progressbar">
                 <li className={step === 1 ? "active" : ""}>Account Setup</li>
                 <li className={step === 2 ? "active" : ""}>Personal Details</li>
                 <li className={step === 3 ? "active" : ""}>Education</li>
-                <li className={step === 4 ? "active" : ""}>Experience</li>
+                {/* <li className={step === 4 ? "active" : ""}>Experience</li> */}
               </ul>
               {renderStep()}
               <p>
@@ -437,13 +480,13 @@ const Registration = () => {
           </>
         ) : (
           <div id="multistepsform">
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} className="RegisterWrapper">
               <h2 className="fs-title">Welcome back,</h2>
               <h3 className="fs-subtitle">
                 Get your first job as shadow teacher
               </h3>
               <h3 className="fs-subtitle"></h3>
-              <div className="RegisterWrapper">
+              <div>
                 {/* Existing form fields */}
                 <div className="firstlastNameWrapper">
                   <div className="fs-input">
