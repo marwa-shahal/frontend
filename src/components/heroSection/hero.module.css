@@ -3,7 +3,7 @@
 
 .title {
   font-family: "Gyahegi", sans-serif;
-  font-size: 80px;
+  font-size: 80px ;
 }
 .titleContainer {
   display: flex;
@@ -27,7 +27,7 @@
   flex-direction: column;
   align-items: center;
   align-content: center;
-  margin: 0 auto;
+  margin: 5rem auto;
 }
 
 .heroWrapper {
@@ -69,7 +69,7 @@ text-align: center;
 .image3 img {
   padding: 20px;
   border: 1px solid black;
-  border-radius: 50% 0 50% 0;
+  border-radius: 50% 5% 50% 0;
 }
 
 .heroImagesWrapper {
@@ -94,3 +94,18 @@ text-align: center;
   color: black;
   background-color: white;
 }
+
+@media only screen and (max-width: 1224px) {
+  .title{
+    font-size: 60px;
+  }
+  .titleContainer .title {
+    margin-right: 50px;
+  }
+  .heroImage2{
+  height:70vh;
+  width:30vw;
+  }
+}
+
+@media only screen and (max-width: 480px) {}

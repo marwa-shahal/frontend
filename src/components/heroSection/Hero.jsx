@@ -48,6 +48,7 @@ function Hero() {
         </div>
         <img
           src={heroImage2}
+          className={Classes.heroImage2}
           alt="heroImage"
           height={"600px"}
           width={"250px"}
@@ -55,13 +56,28 @@ function Hero() {
       </div>
       <div className={Classes.heroImagesWrapper}>
         <div className={Classes.image1}>
-          <img src={image1} alt="" height={"500px"} width={"330px"} />
+          <img
+            src={image1}
+            alt="shadowteacher1"
+            height={"330px"}
+            width={"330px"}
+          />
         </div>
         <div className={Classes.image3}>
-          <img src={image3} alt="" height={"500px"} width={"450px"} />
+          <img
+            src={image3}
+            alt="shadowteacher3"
+            height={"330px"}
+            width={"490px"}
+          />
         </div>
         <div className={Classes.image2}>
-          <img src={image2} alt="" height={"500px"} width={"330px"} />
+          <img
+            src={image2}
+            alt="shadowteacher2"
+            height={"330px"}
+            width={"310px"}
+          />
         </div>
       </div>
     </div>

@@ -7,20 +7,23 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const navigate = useNavigate();
-  console.log("user",user)
+  console.log("user", user);
+
   const signUp = async (data) => {
-    console.log("user",data)
+    console.log("user", data);
     const headers = {
       "Content-Type": "multipart/form-data",
     };
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/user/signup", {...data}, headers
+        "http://localhost:5000/user/signup",
+        { ...data },
+        headers
       );
 
       if (response.status === 201) {
-        console.log(response)
+        console.log(response);
         const newUser = response.data.user;
         setUser(newUser);
         navigate("/login");
@@ -55,6 +58,10 @@ const AuthProvider = ({ children }) => {
         const authenticatedUser = response.data;
         console.log(response.data);
         setUser(authenticatedUser.user);
+        localStorage.setItem(
+          "userData",
+          JSON.stringify(authenticatedUser.user)
+        );
         navigate("/profile"); // Navigate to the profile page
       } else {
         throw new Error("Login failed");
@@ -82,6 +89,7 @@ const AuthProvider = ({ children }) => {
       // Example: Clear user session by making an API call to a logout endpoint
       await axios.post("/api/logout");
       setUser(null);
+      localStorage.removeItem('userData');
     } catch (error) {
       let errorMessage = "Logout failed";
 

@@ -11,7 +11,7 @@ function Navbar() {
             <div className={Classes.brand}>
               <Link to="/" className={Classes.brandLink}>
                 EduShadows
-                {/* <img src="./assets/Logo.png" alt="Logo" /> */}
+             
               </Link>
             </div>
             <nav className={Classes.nav}>

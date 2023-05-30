@@ -8,7 +8,7 @@ const Login = () => {
   // const { userData, handleSubmit } = useForm();
   const { register, handleSubmit } = useForm();
   const { login } = useContext(AuthContext);
-  
+
   // const Login = (data) => {
   //   // Perform login logic, collect user data, etc.
   //   // Call the login function from the context
@@ -17,7 +17,7 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     try {
-      console.log("logind",data);
+      console.log("logind", data);
       // Call the login function from the context and pass the form data
       await login(data);
       // register.reset();
@@ -41,44 +41,47 @@ const Login = () => {
           alt="RegisterImage2"
         />
       </div>
-      <div id="multistepsform">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <h2 className="fs-title">Welcome back,</h2>
-          <h3 className="fs-subtitle">login to continue</h3>
-          <h3 className="fs-subtitle"></h3>
-          <div className="RegisterWrapper">
-            <div className="fs-input">
-              {/* <input type="text" name="email" ref={userData} /> */}
+      <div className="RegisterForm">
+        <div id="multistepsform">
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <h2 className="fs-title">Welcome back,</h2>
+            <h3 className="fs-subtitle">login to continue</h3>
+            <h3 className="fs-subtitle"></h3>
+
+            <div className="RegisterWrapper">
+              <div className="fs-input">
+                {/* <input type="text" name="email" ref={userData} /> */}
+                <input
+                  type="text"
+                  name="email"
+                  {...register("email", { required: true })}
+                />
+                <label className="fs-label" htmlFor="email">
+                  Email
+                </label>
+              </div>
+              <div className="fs-input">
+                <input
+                  type="password"
+                  name="password"
+                  {...register("password", { required: true })}
+                />
+                <label className="fs-label" htmlFor="pass">
+                  Password
+                </label>
+              </div>
               <input
-                type="text"
-                name="email"
-                {...register("email", { required: true })}
+                type="submit"
+                name="next"
+                className="next action-button"
+                value="Login"
               />
-              <label className="fs-label" htmlFor="email">
-                Email
-              </label>
             </div>
-            <div className="fs-input">
-              <input
-                type="password"
-                name="password"
-                {...register("password", { required: true })}
-              />
-              <label className="fs-label" htmlFor="pass">
-                Password
-              </label>
-            </div>
-            <input
-              type="submit"
-              name="next"
-              className="next action-button"
-              value="Login"
-            />
-          </div>
-          <p>
-            Don't have an account? <Link to="/userData">Signup</Link>
-          </p>
-        </form>
+            <p>
+              Don't have an account? <Link to="/register">Signup</Link>
+            </p>
+          </form>
+        </div>
       </div>
     </div>
   );

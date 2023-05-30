@@ -1,20 +1,31 @@
 * {
   font-family: "URW Geometric", sans-serif;
 }
+.findTeachersPage{
+  margin: 8rem auto;
+}
 .findTeacherWrapper {
-  align-items: flex-start;
+  /* align-items: flex-start; */
   display: flex;
-  gap:20px;
-  /* flex-wrap: wrap; */
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;.findTeachersPage{
+    margin: 8rem auto;
+  }
+  /* flex-wrap:wrap; */
+  gap: 20px;
+  flex-wrap: wrap;
   margin: 0 auto;
   max-width: 1280px;
   padding: 16px 32px 0;
 }
 .lSide {
   display: flex;
-  flex: 1 1;
-  flex-direction: column;
-  max-width: calc(100% - 398px);
+  flex-wrap: wrap;
+  gap: 15px;
+  /* flex: 1 1; */
+  /* flex-direction: column; */
+  /* max-width: calc(100% - 398px); */
 }
 
 .filterContainer {
@@ -29,7 +40,12 @@
   margin: 20px auto;
 }
 
-.filterItem {
+/* .filterItem {
+  margin-right: 20px;
+  position: relative;
+} */
+
+.filterItem:not(:last-child) {
   margin-right: 20px;
   position: relative;
 }
@@ -77,10 +93,13 @@
   color: black;
 }
 .select {
-  padding: 8px 32px 8px 32px;
-  border: 1px solid black;
+  /* padding: 8px 32px 8px 32px;
+  border: 1px solid black; */
   background-color: white;
   color: black;
+  padding: 9px;
+  border: 1px solid black;
+  width: 200px;
 }
 .dropdownContent a {
   color: black;
@@ -111,18 +130,41 @@
     display: block;
     margin: 0 auto;
     max-width: 440px;
+    width: 100vw;
     padding: 16px 32px 0;
   }
   .lSide {
     display: block;
     /* flex: 1 1;
     flex-direction: column; */
-    max-width:100%;
+    max-width: 100%;
   }
 }
 @media only screen and (max-width: 768px) {
-  .filterContainer{
+  .filterContainer {
     max-width: 600px;
+    gap:15px;
+  }
+  .findTeacherWrapper {
+    display: block;
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 16px 32px 0;
+  }
+  .lSide {
+    display: block;
+    /* flex: 1 1;
+    flex-direction: column; */
+    max-width: 100%;
+  }
+  .findTeachersPage{
+    margin: 5rem auto;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  /* .filterContainer{
+    max-width: 1000px;
   }
   .findTeacherWrapper {
     display: block;
@@ -132,26 +174,30 @@
   }
    .lSide {
     display: block;
-    /* flex: 1 1;
+    margin: 0 auto; */
+  /* flex: 1 1;
     flex-direction: column; */
-    max-width:100%;
-  }
-}
+  /* max-width:100%;
+  } */
 
-@media only screen and (max-width: 1024px) {
-  .filterContainer{
-    max-width: 1000px;
+  .findTeachersPage{
+    margin: 5rem auto;
+  }
+
+  .filterContainer {
+    max-width: 600px;
+    gap: 15px;
   }
   .findTeacherWrapper {
     display: block;
     margin: 0 auto;
-    max-width:1000px;
+    max-width: 600px;
     padding: 16px 32px 0;
   }
-   .lSide {
+  .lSide {
     display: block;
     /* flex: 1 1;
     flex-direction: column; */
-    max-width:100%;
+    max-width: 100%;
   }
 }
