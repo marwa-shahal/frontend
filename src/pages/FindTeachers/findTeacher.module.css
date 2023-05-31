@@ -139,10 +139,16 @@
     flex-direction: column; */
     max-width: 100%;
   }
+  .select{
+    max-width: 600px;
+  }
 }
 @media only screen and (max-width: 768px) {
   .filterContainer {
     max-width: 600px;
+    width:100vw;
+    display:flex;
+    /* flex-direction: column; */
     gap:15px;
   }
   .findTeacherWrapper {
@@ -160,6 +166,12 @@
   .findTeachersPage{
     margin: 5rem auto;
   }
+  /* .searchBar{
+    width:90vw;
+  }
+  .select{
+    width:90vw;
+  } */
 }
 
 @media only screen and (max-width: 1024px) {

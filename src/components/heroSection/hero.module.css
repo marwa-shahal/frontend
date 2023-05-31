@@ -3,7 +3,7 @@
 
 .title {
   font-family: "Gyahegi", sans-serif;
-  font-size: 80px ;
+  font-size: 80px;
 }
 .titleContainer {
   display: flex;
@@ -45,19 +45,25 @@
   margin-top: 20px;
   font-family: "URW Geometric", sans-serif;
 }
-.callToAction{
-text-align: center;
+.callToAction {
+  text-align: center;
+}
+
+.callToActionRes {
+  display: none;
 }
 .image1,
 .image2,
 .image3 {
   object-fit: cover;
 }
-
+.callToActionImage {
+  display: none;
+}
 .image1 img {
   border-radius: 50%;
   padding: 20px;
-  border: 1px solid black;
+  border: 2px solid black;
 }
 
 .image2 img {
@@ -95,17 +101,163 @@ text-align: center;
   background-color: white;
 }
 
-@media only screen and (max-width: 1224px) {
-  .title{
-    font-size: 60px;
+.heroImage2 {
+  height: 600px;
+  width: 250px;
+}
+
+.heroWrapperResp {
+  display: none;
+}
+
+/* @media screen and (max-width: 1300px) {
+  .title {
+    font-size: 4rem;
+  }
+  .heroImage2 {
+    height: 500px;
+    width: 250px;
+  }
+} */
+.image4 img {
+  display: none;
+}
+
+@media only screen and (max-width: 1300px) {
+  /* .title {
+    font-size: 6vw;
   }
   .titleContainer .title {
     margin-right: 50px;
   }
-  .heroImage2{
-  height:70vh;
-  width:30vw;
+  .heroImage2 {
+    height: 500px;
+    width: 208px;
+  } */
+  .callToAction {
+    display: none;
+  }
+  .callToActionImage {
+    display: block;
+  }
+  /* .callToActionImage img {
+    border-radius: 50%;
+    padding: 20px;
+    border: 1px solid black;
+    height: 200px;
+    width: 200px;
+  } */
+  .callToActionRes {
+    display: block;
+    margin-right: 20px;
+    margin-left: 20px;
+    text-align: center;
+    font-size: 3vw;
+  }
+  .link {
+    display: inline-block;
+    padding: 10px 10px;
+    border: 1px solid black;
+    margin-top: 20px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-family: "URW Geometric", sans-serif;
+    color: white;
+    background-color: black;
+  }
+  .heroWrapper {
+    display: none;
+  }
+  .heroWrapperResp {
+    display: block;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+  .heroWrapperResp img {
+    width: 100%;
+  }
+  .heroImagesWrapper {
+    align-items: center;
+    margin-top: 5%;
+  }
+  .image1 img {
+    display: none;
+  }
+  .image3 img {
+    height: 150px;
+    width: 222px;
+    padding: 5px;
+    /* border-radius: 50%; */
+  }
+  .image2 img {
+    height: 150px;
+    width: 155px;
+    padding: 5px;
+    /* border-radius: 0%; */
+  }
+
+  .image4 img {
+    display: block;
+    height: 150px;
+    width: 222px;
+    padding: 5px;
+    border:1px solid black;
+    border-radius: 50%;
   }
 }
 
-@media only screen and (max-width: 480px) {}
+@media only screen and (max-width: 480px) {
+  .heroImagesWrapper {
+    width:90%;
+    flex-wrap: wrap;
+    gap:3px;
+    align-items: center;
+  }
+
+  /* .image2 img,
+  .image3 img {
+    height: 200px;
+    width: 200px;
+  } */
+
+  .callToActionRes {
+    display: block;
+    margin-right: 20px;
+    margin-left: 20px;
+    text-align: center;
+    font-size: 4vw;
+  }
+  .link {
+    display: inline-block;
+    padding: 10px 10px;
+    border: 1px solid black;
+    margin-top: 20px;
+    text-decoration: none;
+    font-size: 4vw;
+    font-family: "URW Geometric", sans-serif;
+    color: white;
+    background-color: black;
+  }
+
+  .image3 img {
+    height: 100px;
+    width: 150px;
+    padding: 5px;
+    /* border-radius: 50%; */
+  }
+  .image2 img {
+    height:100px;
+    width: 105px;
+    padding: 5px;
+    
+  }
+
+  .image4 img {
+    display: block;
+    height: 100px;
+    width: 105px;
+    padding: 5px;
+    border:1px solid black;
+    border-radius: 50%;
+  }
+}

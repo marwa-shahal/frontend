@@ -8,7 +8,7 @@ const Registration = () => {
   const { signUp } = useContext(AuthContext);
   const { register, handleSubmit, reset } = useForm();
 
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     let userData;
     console.log(data);
     if (userRegistration === "teacher") {
@@ -25,12 +25,39 @@ const Registration = () => {
     }
     try {
       console.log("signup", userData);
-      await signUp(userData);
-      reset();
+      signUp(userData);
+      // reset();
     } catch (error) {
       console.error("Signup failed:", error.message);
     }
   };
+
+  // const { signUp } = useContext(AuthContext);
+  // const { register, handleSubmit, reset } = useForm();
+
+  // const onSubmit = async (data) => {
+  //   let userData;
+  //   console.log(data);
+  //   if (userRegistration === "teacher") {
+  //     userData = {
+  //       ...data,
+  //       // description:data.description,
+  //       languages: result,
+  //       isValid: false,
+  //       role: "Teacher",
+  //     };
+  //   }
+  //   if (userRegistration === "user") {
+  //     userData = { ...data, isValid: false, role: "User" };
+  //   }
+  //   try {
+  //     console.log("signup", userData);
+  //     await signUp(userData);
+  //     reset();
+  //   } catch (error) {
+  //     console.error("Signup failed:", error.message);
+  //   }
+  // };
   const countries = [
     { code: "us", name: "United States" },
     { code: "ca", name: "Canada" },
@@ -144,12 +171,6 @@ const Registration = () => {
                   Password
                 </label>
               </div>
-              <div className="fs-input">
-                <input type="password" name="cpass" />
-                <label className="fs-label" htmlFor="cpass">
-                  Confirm Password
-                </label>
-              </div>
             </div>
             <input
               type="button"
@@ -188,7 +209,7 @@ const Registration = () => {
                   </label>
                 </div>
               </div>
-              <div className="firstlastNameWrapper">
+              <div className="address">
                 <div className="fs-input">
                   {/* <textarea name="address"></textarea> */}
                   <select name="country" {...register("country")}>
@@ -248,8 +269,8 @@ const Registration = () => {
                 </label>
               </div>
               {/* <div className="fs-input"> */}
-                {/* <input type="text" name="lang" />  */}
-                {/* <input
+              {/* <input type="text" name="lang" />  */}
+              {/* <input
                   type="file"
                   accept="image/*"
                   id="img-upload"
@@ -257,7 +278,7 @@ const Registration = () => {
                   required
                   {...register("image")}
                 /> */}
-                {/* <input
+              {/* <input
                   type="file"
                   accept="image/*"
                   id="img-upload"
@@ -530,12 +551,12 @@ const Registration = () => {
                     Password
                   </label>
                 </div>
-                <div className="fs-input">
+                {/* <div className="fs-input">
                   <input type="password" name="cpass" />
                   <label className="fs-label" htmlFor="cpass">
                     Confirm Password
                   </label>
-                </div>
+                </div> */}
                 <input
                   type="submit"
                   name="next"

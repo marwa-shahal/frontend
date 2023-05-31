@@ -17,10 +17,15 @@ function FindTeachers() {
     setPage(value);
   };
 
-  const handleNameChange = (event) => {
-    // setFirstName(event.target.value);
+  function handleKeyPress(event) {
+    if (event.key === "Enter") {
+      setQuery(event.target.value);
+    }
+  }
+
+  function handleBlur(event) {
     setQuery(event.target.value);
-  };
+  }
 
   const handleCountryChange = (event) => {
     setCountry(event.target.value);
@@ -33,7 +38,7 @@ function FindTeachers() {
   const getData = () => {
     axios
       .get(
-        `http://localhost:5000/user/filterteachers?query=${query}&country=${country}&page=${page}&limit=4`
+        `https://edushadows-backend.onrender.com/user/filterteachers?query=${query}&country=${country}&page=${page}&limit=4`
       )
       .then((response) => {
         console.log(response);
@@ -72,7 +77,8 @@ function FindTeachers() {
             type="text"
             className={Classes.searchBar}
             placeholder="Search by name"
-            onChange={handleNameChange}
+            onKeyPress={handleKeyPress}
+            onBlur={handleBlur}
           />
           <AiOutlineSearch className={Classes.searchIcon} />
         </div>

@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { useCookies } from "react-cookie";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import AuthContext from "./AuthContext";
 import { useNavigate } from "react-router-dom";
 
@@ -11,38 +14,23 @@ const AuthProvider = ({ children }) => {
 
   const signUp = async (data) => {
     console.log("user", data);
-    const headers = {
-      "Content-Type": "multipart/form-data",
-    };
-
     try {
-      const response = await axios.post(
-        "http://localhost:5000/user/signup",
-        { ...data },
-        headers
-      );
-
+      const response = await axios.post("https://edushadows-backend.onrender.com/user/signup", {
+        ...data,
+      });
       if (response.status === 201) {
         console.log(response);
         const newUser = response.data.user;
         setUser(newUser);
+        toast.success("Signed up successfully");
         navigate("/login");
       } else {
+        toast.error("Sign-up failed");
         throw new Error("Sign-up failed");
       }
     } catch (error) {
-      let errorMessage = "Sign-up failed";
-
-      if (
-        error.response &&
-        error.response.data &&
-        error.response.data.message
-      ) {
-        errorMessage = error.response.data.message;
-      }
-
-      // Handle sign-up error, e.g., display an error message to the user
-      console.error(errorMessage);
+      console.error(error);
+      toast.error("Sign-up failed");
     }
   };
 
@@ -50,7 +38,7 @@ const AuthProvider = ({ children }) => {
     console.log(data);
     try {
       const response = await axios.post(
-        "http://localhost:5000/user/login",
+        "https://edushadows-backend.onrender.com/user/login",
         data
       );
       console.log(response);
@@ -58,27 +46,21 @@ const AuthProvider = ({ children }) => {
         const authenticatedUser = response.data;
         console.log(response.data);
         setUser(authenticatedUser.user);
+        toast.success("logged in successfully");
         localStorage.setItem(
           "userData",
           JSON.stringify(authenticatedUser.user)
         );
-        navigate("/profile"); // Navigate to the profile page
+        response.data.user.role === "Teacher"
+          ? navigate("/teacherprofile")
+          : navigate("/profile"); // Navigate to the profile page
       } else {
+        toast.error("login failed");
         throw new Error("Login failed");
       }
     } catch (error) {
-      let errorMessage = "Login failed";
-
-      if (
-        error.response &&
-        error.response.data &&
-        error.response.data.message
-      ) {
-        errorMessage = error.response.data.message;
-      }
-
-      // Handle login error, e.g., display an error message to the user
-      console.error(errorMessage);
+      toast.error("login failed");
+      console.error(error.message);
     }
   };
 
@@ -87,9 +69,9 @@ const AuthProvider = ({ children }) => {
       // Perform logout logic, e.g., clear user session or revoke token
 
       // Example: Clear user session by making an API call to a logout endpoint
-      await axios.post("/api/logout");
-      setUser(null);
-      localStorage.removeItem('userData');
+      await axios.post("https://edushadows-backend.onrender.com/logout");
+      setUser(null);   <ToastContainer />
+      localStorage.removeItem("userData");
     } catch (error) {
       let errorMessage = "Logout failed";
 
@@ -118,7 +100,10 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={authContextValue}>
-      {children}
+      <div>
+        {children}
+        <ToastContainer />
+      </div>
     </AuthContext.Provider>
   );
 };

@@ -42,7 +42,7 @@ input:-webkit-autofill {
 #multistepsform select {
   width: 245px;
 }
-#multistepsform .address input{
+#multistepsform .address input {
   width: 245px;
 }
 #multistepsform select:focus,
@@ -167,14 +167,13 @@ input:-webkit-autofill {
   display: flex;
   /* flex-wrap: wrap; */
   width: 100%;
-
 }
 .RegisterContainer {
   display: flex;
   max-width: 1200px;
   /* margin: 0 auto; */
   /* margin: 50px auto; */
-  margin:10rem auto ;
+  margin: 10rem auto;
   gap: 5px;
 }
 
@@ -215,7 +214,6 @@ p {
   width: 80%;
   margin: 0 10%;
   position: relative;
-
 }
 
 .RegisterAs {
@@ -224,7 +222,7 @@ p {
   justify-content: center;
   gap: 10px;
   margin-bottom: 20px;
-  margin-right:auto;
+  margin-right: auto;
   margin-left: auto;
   text-align: center;
 }
@@ -237,8 +235,8 @@ p {
   border-bottom: 1px solid black;
   cursor: pointer;
 }
-.RegisterForm{
-  width: 600px
+.RegisterForm {
+  width: 600px;
 }
 .RegisterActive {
   font-size: 16px;
@@ -254,16 +252,15 @@ p {
   width: 100%;
 }
 
-
-#multistepsform .firstlastNameWrapper  input{
+#multistepsform .firstlastNameWrapper input {
   width: 245px;
 }
 
 .firstlastNameWrapper .fs-input {
   margin-bottom: 2px;
 }
-.RegisterForm{
-  width:700px
+.RegisterForm {
+  width: 700px;
 }
 @media only screen and (max-width: 1080px) {
   .RegisterImage {
@@ -275,7 +272,7 @@ p {
   }
   #multistepsform {
     /* width: 600px; */
-    width:100%;
+    width: 100%;
     margin: 0 auto;
     /* margin: 50px auto; */
     text-align: center;
@@ -283,30 +280,35 @@ p {
   }
   .RegisterForm {
     width: 100%;
-}
-#multistepsform fieldset{
-  display: block;
-  max-width: 100%;
-  overflow: hidden;
-}
-.address{
-  display: block;
-}
-#multistepsform .address input,
-#multistepsform select{
-  width:100%
-}
+  }
+  #multistepsform fieldset {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .address {
+    display: block;
+  }
+  .firstlastNameWrapper {
+    display: block;
+    /* width: 100%; */
+  }
+  #multistepsform .firstlastNameWrapper input,
+  #multistepsform .address input,
+  #multistepsform select {
+    width: 100%;
+  }
 }
 
 * {
   box-sizing: border-box;
 }
 
-#multistepsform #img-upload{
+#multistepsform #img-upload {
   font-family: "URW Geometric", sans-serif;
-/* margin:5px; */
-font-size: 16px;
-padding:10px 15px 15px 0px;
+  /* margin:5px; */
+  font-size: 16px;
+  padding: 10px 15px 15px 0px;
   /* display:inline-block;
   margin-bottom:15px; */
 }

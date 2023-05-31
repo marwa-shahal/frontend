@@ -36,11 +36,11 @@ export default function ReviewModal(props) {
       console.log(reviewData);
 
       const response = await axios.post(
-        "http://localhost:5000/review/",
+        "https://edushadows-backend.onrender.com/review/",
         reviewData
       );
 
-      if (response.status === 201) {
+      if (response.status === 200) {
         console.log(response);
         reset();
       } else {
