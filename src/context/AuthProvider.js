@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { useCookies } from "react-cookie";
+// import Cookie from 'universal-cookie';
+import CookieService from "../services/cookie.service";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AuthContext from "./AuthContext";
@@ -44,13 +45,17 @@ const AuthProvider = ({ children }) => {
       console.log(response);
       if (response.status === 200) {
         const authenticatedUser = response.data;
-        console.log(response.data);
+        let cookiesss=response.headers['set-cookie']
+        console.log("coookieeeeee", cookiesss);
         setUser(authenticatedUser.user);
         toast.success("logged in successfully");
         localStorage.setItem(
           "userData",
           JSON.stringify(authenticatedUser.user)
         );
+        // const cookie = new Cookie()
+        // cookie.set("token", authenticatedUser);
+        CookieService.set("token", authenticatedUser);
         response.data.user.role === "Teacher"
           ? navigate("/teacherprofile")
           : navigate("/profile"); // Navigate to the profile page
@@ -70,21 +75,12 @@ const AuthProvider = ({ children }) => {
 
       // Example: Clear user session by making an API call to a logout endpoint
       await axios.post("https://edushadows-backend.onrender.com/logout");
-      setUser(null);   <ToastContainer />
+      setUser(null);
       localStorage.removeItem("userData");
+      CookieService.remove("token");
+      
     } catch (error) {
-      let errorMessage = "Logout failed";
-
-      if (
-        error.response &&
-        error.response.data &&
-        error.response.data.message
-      ) {
-        errorMessage = error.response.data.message;
-      }
-
-      // Handle logout error, e.g., display an error message to the user
-      console.error(errorMessage);
+      console.error(error);
     }
   };
 

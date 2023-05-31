@@ -1,15 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import CookieService from "../../services/cookie.service";
+import ProfileAvatar from "./ProfileAvatar.js";
+import AuthContext from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 import "./navbarnew.css";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const navigate = useNavigate();
+  const currentUser = CookieService.get("token");
+  const { setUser } = useContext(AuthContext);
+  console.log("token", currentUser);
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
   const closeNavbar = () => {
     setIsOpen(false);
+  };
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.removeItem("userData");
+    CookieService.remove("token");
+    navigate("/login");
   };
 
   return (
@@ -50,15 +63,37 @@ const Navbar = () => {
             Login
           </button>
         </li> */}
-        <li className={isOpen ? "fade" : ""} onClick={closeNavbar}>
-          <div className="registerRes">
-            <Link to="/register">Register</Link>
-          </div>
-        </li>
+
+        {!currentUser ? (
+          <li className={isOpen ? "fade" : ""} onClick={closeNavbar}>
+            <div className="registerRes">
+              <Link to="/register">Register</Link>
+            </div>
+          </li>
+        ) : (
+          <>
+            <li className={isOpen ? "fade" : ""} onClick={closeNavbar}>
+              <div className="registerRes">Profile</div>
+            </li>
+            <li className={isOpen ? "fade" : ""} onClick={closeNavbar}>
+              <div className="registerRes" onClick = {handleLogout}>Logout</div>
+            </li>
+          </>
+        )}
       </ul>
-      <div className="register">
-        <Link to="/register">Register</Link>
-      </div>
+      {!currentUser ? (
+        <div className="register">
+          <Link to="/register">Register</Link>
+        </div>
+      ) : (
+        <div className="register">
+          {/* <Avatar sx={{ bgcolor: "#ec663e" }} variant="square">
+              N
+            </Avatar> */}
+          {/* <Avatar sx={{ bgcolor: "black" }} variant="square"></Avatar> */}
+          <ProfileAvatar handleLogout={handleLogout} />
+        </div>
+      )}
     </nav>
   );
 };

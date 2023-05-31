@@ -130,13 +130,35 @@ body {
   color: white !important;
   border: 1px solid black;
   text-decoration: none;
-  font-family: var(--font);
   font-family: "URW Geometric", sans-serif;
 }
 .register a:hover {
   color: black !important;
   background-color: white;
   border: 1px solid black;
+}
+.register.profile{
+  color:black;
+  font-size:18px;
+  font-family: "URW Geometric", sans-serif;
+  color: black;
+  margin-left:10px;
+}
+.register.logout{
+  color:black;
+  /* padding: 12px 24px; */
+  font-size:18px;
+  font-family: "URW Geometric", sans-serif;
+    /* margin: 0 0.7vw; */
+  color: black;
+  margin-left:10px;
+  top:15px;
+}
+
+.loggedin {
+  /* display:flex; */
+  position:relative;
+  top:15px;
 }
 
 .registerRes{
@@ -155,6 +177,7 @@ body {
 .hamburger {
   display: none;
 }
+
 
 @media screen and (max-width: 1500px) {
   .nav {
@@ -176,6 +199,9 @@ body {
   }
   .registerRes{
     display:block;
+  }
+  .registerRes{
+    color:white
   }
   .logo {
     padding: 1vh 1vw;
