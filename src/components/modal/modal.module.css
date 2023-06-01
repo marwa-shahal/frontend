@@ -7,7 +7,7 @@
   transition: background-color 0.3s ease;
   margin: 10px;
   /* width: 130px; */
-  width:7rem;
+  width: 7rem;
 }
 .teacherCardReviewButton:hover {
   border: 1px solid black;
@@ -43,13 +43,26 @@
 .review textarea {
   border: 0.2px solid black;
   border-radius: 0px !important;
-  color:black;
+  color: black;
   padding: 5px;
 }
 .review {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
+}
+.teacherProfielCardReviewBtn {
+  font-weight: 400;
+  font-size: 15px;
+  margin: 0;
+
+  padding: 0;
+  border: 0;
+  height: auto;
+  background: transparent;
+  color: #097bbf;
+  outline: none;
+  cursor: pointer;
 }
 
 /* @media only screen and (max-width: 480px) {

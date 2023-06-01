@@ -4,6 +4,7 @@ import { MdModeEdit } from "react-icons/md";
 import { FaGraduationCap } from "react-icons/fa";
 import { MdLocationPin, MdOutlineVerifiedUser } from "react-icons/md";
 import { AiTwotoneMail } from "react-icons/ai";
+import Review from "./Review";
 
 
 const AboutCard = () => {
@@ -41,7 +42,8 @@ const AboutCard = () => {
        <MdModeEdit  /> edit
       </a>
       <hr className={Classes.horizontalLine} />
-      <div className={Classes.about}>
+      <div className={Classes.reviewsResLargeScreens}><Review /></div>
+      {/* <div className={Classes.about}>
         <p>About</p>
         <a href="#">
           <i className="fas fa-pen stroke-transparent-blue"></i>
@@ -73,7 +75,7 @@ const AboutCard = () => {
         Fax
         <br />
         <strong>+91-532-25453441</strong>
-      </p>
+      </p> */}
     </div>
   );
 };
