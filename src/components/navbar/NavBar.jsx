@@ -22,7 +22,7 @@ const Navbar = () => {
     setUser(null);
     localStorage.removeItem("userData");
     CookieService.remove("token");
-    navigate("/login");
+    // navigate("/login");
   };
 
   return (
@@ -73,10 +73,10 @@ const Navbar = () => {
         ) : (
           <>
             <li className={isOpen ? "fade" : ""} onClick={closeNavbar}>
-              <div className="registerRes">Profile</div>
+              <Link to={currentUser.user.role === "Teacher"? "/teacherprofile":"/profile"} className="registerRes">Profile</Link>
             </li>
             <li className={isOpen ? "fade" : ""} onClick={closeNavbar}>
-              <div className="registerRes" onClick = {handleLogout}>Logout</div>
+              <Link to="/login" className="registerRes" onClick = {handleLogout}>Logout</Link>
             </li>
           </>
         )}
