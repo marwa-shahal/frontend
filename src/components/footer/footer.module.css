@@ -1,0 +1,51 @@
+/* .brandFooterLink {
+  font-family: "Gyahegi", sans-serif;
+  text-decoration: none;
+  color: white;
+  padding-bottom: 20px;
+}
+
+.contactArea {
+  border-bottom: 1px solid #353c46;
+}
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top:20px;
+}
+.container p{
+    padding-bottom:20px;
+}
+ */
+
+section,
+.footer {
+  background: black;
+  color: white;
+}
+
+.footer p {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.footer img {
+  width: 44px;
+}
+.brandFooterLink {
+  font-family: "Gyahegi", sans-serif;
+  text-decoration: none;
+  color: white;
+  font-size: 11px;
+  /* padding-bottom: 20px; */
+}
+
+
+/* @media only screen and (max-width: 480px) {
+    .footer p {
+        font-size: 11px;
+    }
+} */

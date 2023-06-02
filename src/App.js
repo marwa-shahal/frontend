@@ -11,6 +11,7 @@ import Registration from "./pages/Registration/Registration";
 import Login from "./pages/Registration/Login";
 import Profile from "./pages/Profile/Profile";
 import UserProfile from "./pages/UserProfile/UserProfile";
+import Footer from "./components/footer/Footer";
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/teacherprofile" element={<Profile />} />
         <Route path="/profile" element={<UserProfile />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

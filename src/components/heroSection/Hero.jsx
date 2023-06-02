@@ -72,20 +72,20 @@ function Hero() {
         </div>
       </div>
       <div className={Classes.heroImagesWrapper}>
-        <div className={Classes.image4}>
-          <img
-            src={image4}
-            alt="shadowteacher2"
-            height={"330px"}
-            width={"490px"}
-          />
-        </div>
         <div className={Classes.image1}>
           <img
             src={image1}
             alt="shadowteacher1"
             height={"330px"}
             width={"330px"}
+          />
+        </div>
+        <div className={Classes.image4}>
+          <img
+            src={image4}
+            alt="shadowteacher2"
+            height={"330px"}
+            width={"490px"}
           />
         </div>
         <div className={Classes.image3}>

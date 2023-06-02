@@ -81,7 +81,7 @@
 .heroImagesWrapper {
   display: flex;
   gap: 30px;
-  margin-top: 100px;
+  margin-top: 10%;
 }
 
 .link {
@@ -210,8 +210,9 @@
   .heroImagesWrapper {
     width:90%;
     flex-wrap: wrap;
-    gap:3px;
+    gap:3%;
     align-items: center;
+    margin-top: 70px;
   }
 
   /* .image2 img,
@@ -224,8 +225,9 @@
     display: block;
     margin-right: 20px;
     margin-left: 20px;
+    margin-top: 50px;
     text-align: center;
-    font-size: 4vw;
+    font-size: 4vw; 
   }
   .link {
     display: inline-block;
@@ -240,6 +242,7 @@
   }
 
   .image3 img {
+    display:none;
     height: 100px;
     width: 150px;
     padding: 5px;
@@ -249,15 +252,34 @@
     height:100px;
     width: 105px;
     padding: 5px;
-    
+    /* border-radius: 50%; */
   }
-
   .image4 img {
     display: block;
     height: 100px;
     width: 105px;
     padding: 5px;
     border:1px solid black;
-    border-radius: 50%;
+    border-radius: 50% 0% 50% 0;
   }
+  .image1 img {
+    display: block;
+    height: 100px;
+    width: 105px;
+    padding: 5px;
+    border:1px solid black;
+    border-radius: 50%;
+    
+  }
+}
+@media only screen and (max-width: 400px) {
+  .heroImagesWrapper {
+    /* width:  90%;
+    flex-wrap: wrap;
+    gap:1%;
+    align-items: center;
+    margin-top: 70px; */
+    display:none;
+  }
+
 }

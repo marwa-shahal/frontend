@@ -6,7 +6,8 @@
   flex-direction: column;
   align-items: center;
   align-content: center;
-  margin: 0 auto;
+  margin: 70px auto;
+  padding: 5px 5%;
 }
 
 .WhoNeedTitle {
@@ -40,8 +41,8 @@
   font-size: 20px;
 }
 
-.whoNeedSection{
- margin-bottom: 30px;
+.whoNeedSection {
+  margin-bottom: 30px;
 }
 
 /* Base */
@@ -66,13 +67,6 @@ h1 *:first-child {
   letter-spacing: -5px;
   font-size: 70px;
   font-size: calc(70px + 50px * ((100vw - 200px) / 1300));
-}
-
-@media only screen and (max-width: 1000px) {
-  h1 {
-    grid-template-columns: 100%;
-    grid-gap: 0px;
-  }
 }
 
 /*
@@ -106,23 +100,9 @@ h1 *:first-child {
   /* align-items: center; */
   justify-content: center;
 }
-
-@media only screen and (max-width: 1300px) {
-  .l-grid {
-    grid-template-columns: 100%;
-    grid-gap: 40px;
-  }
-}
-
 .l-max {
-  @media only screen and (max-width: 700px) {
-    max-width: 500px;
-    margin: auto;
-  }
-  .WhoNeedSection{
-    margin-right: 20px;
-    margin-left: 20px;
-  }
+  max-width: 500px;
+  margin: auto;
 }
 
 /*
@@ -198,4 +178,29 @@ h1 *:first-child {
   border-right: 3px solid black;
   opacity: 0.8;
   transform: translate(-130%, 115%);
+}
+
+@media only screen and (max-width: 1300px) {
+  .l-grid {
+    grid-template-columns: 100%;
+    grid-gap: 40px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  h1 {
+    grid-template-columns: 100%;
+    grid-gap: 0px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .WhoNeedSection {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+  .WhoNeedTitle {
+    margin-top: 5%;
+    font-size: 25px;
+  }
 }
