@@ -16,9 +16,12 @@ const AuthProvider = ({ children }) => {
   const signUp = async (data) => {
     console.log("user", data);
     try {
-      const response = await axios.post("https://edushadows-backend.onrender.com/user/signup", {
-        ...data,
-      });
+      const response = await axios.post(
+        "https://edushadows-backend.onrender.com/user/signup",
+        {
+          ...data,
+        }
+      );
       if (response.status === 201) {
         console.log(response);
         const newUser = response.data.user;
@@ -40,24 +43,32 @@ const AuthProvider = ({ children }) => {
     try {
       const response = await axios.post(
         "https://edushadows-backend.onrender.com/user/login",
-        data
+        data,
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
       );
       console.log(response);
       if (response.status === 200) {
+        console.log(response);
         const authenticatedUser = response.data;
-        let cookiesss=response.headers['set-cookie']
-        console.log("coookieeeeee", cookiesss);
+
+        // const token = response.headers["set-cookie"];
+        // console.log("coookieeeeee", token);
+        // const tok = response.headers; // Access the "Authorization" header
+        // console.log("tok", tok);user: user, token: token
         setUser(authenticatedUser.user);
         toast.success("logged in successfully");
         localStorage.setItem(
           "userData",
           JSON.stringify(authenticatedUser.user)
         );
-        // const cookie = new Cookie()
-        // cookie.set("token", authenticatedUser);
-        CookieService.set("token", authenticatedUser);
+        CookieService.set("token", authenticatedUser.token);
         response.data.user.role === "Teacher"
-          ? navigate("/teacherprofile")
+          ?  navigate(`/teacherprofile/${response.data.user._id}`)
           : navigate("/profile"); // Navigate to the profile page
       } else {
         toast.error("login failed");
@@ -78,7 +89,6 @@ const AuthProvider = ({ children }) => {
       setUser(null);
       localStorage.removeItem("userData");
       CookieService.remove("token");
-      
     } catch (error) {
       console.error(error);
     }

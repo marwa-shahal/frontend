@@ -1,116 +1,60 @@
 import React from "react";
 import Classes from "./infoCard.module.css";
-import Review from "./Review"
+import Review from "./Review";
+import AddExp from "../profileModals/AddExp";
 import { MdOutlineWorkOutline } from "react-icons/md";
 
-const InfoCard = () => {
+const InfoCard = (props) => {
   return (
-    <div>
+    <div className={Classes.infoCards }>
       <div className={Classes.card}>
         <p>
           <MdOutlineWorkOutline />
           &nbsp;&nbsp;&nbsp;Work Experience
         </p>
-        <a href="#">
+        <ul>
+          {props.profileData.experience
+            ? props.profileData.experience.map((exp) => (
+                <li key={exp.id}>
+                  <p className={Classes.tags}>
+                    {exp.position}
+                    <br />
+                    {exp.description}
+                    <span>
+                      {exp.company} |
+                      <span>
+                        {exp.startDate} - {exp.endDate}
+                      </span>
+                    </span>
+                  </p>
+                </li>
+              ))
+            : ""}
+        </ul>
+        {/* <a href="#">
           + Add work experience, including contracts and internships
-        </a>
+        </a> */}
+        <AddExp />
       </div>
       <div className={Classes.card}>
         <p>
           <MdOutlineWorkOutline />
-          &nbsp;&nbsp;&nbsp;Workshop
+          &nbsp;&nbsp;&nbsp;Certificates
         </p>
         <ul>
-          <li>
-            <p className={Classes.tags}>
-              5 th IEEE Conference on Wireless Communication and Sensor Networks
-              <br />
-              <span>
-                IIIT-Allahabad | <span>2010</span>
-              </span>
-            </p>
-            <a className={Classes.edit} href="#">
-              <i
-                className={`${Classes.fas} ${Classes.faPen} ${Classes.strokeTransparentBlue}`}
-              ></i>
-            </a>
-          </li>
-          <li>
-            <p className={Classes.tags}>
-              Microsoft Theory Day
-              <br />
-              <span>
-                IISc Bangalore | <span>2012</span>
-              </span>
-            </p>
-            <a className={Classes.edit} href="#">
-              <i
-                className={`${Classes.fas} ${Classes.faPen} ${Classes.strokeTransparentBlue}`}
-              ></i>
-            </a>
-          </li>
-          <li>
-            <p className={Classes.tags}>
-              Microsoft Research India 2012 Summer School on Distributed
-              Algorithms, Systems and Programming
-              <br />
-              <span>
-                IISc Bangalore | <span>2012</span>
-              </span>
-            </p>
-            <a className={Classes.edit} href="#">
-              <i
-                className={`${Classes.fas} ${Classes.faPen} ${Classes.strokeTransparentBlue}`}
-              ></i>
-            </a>
-          </li>
-          <li>
-            <p className={Classes.tags}>
-              IEEE workshop on Cyber security
-              <br />
-              <span>
-                DAIICT Gandhi Nagar | <span>Nov, 2013</span>
-              </span>
-            </p>
-            <a className={Classes.edit} href="#">
-              <i
-                className={`${Classes.fas} ${Classes.faPen} ${Classes.strokeTransparentBlue}`}
-              ></i>
-            </a>
-          </li>
-          <li>
-            <p className={Classes.tags}>
-              Author workshop jointly organized by Central Library
-              <br />
-              <span>
-                MNNIT Allahabad & Springer (India) Pvt. Ltd New Delhi |{" "}
-                <span>29th October, 2015</span>
-              </span>
-            </p>
-            <a className={Classes.edit} href="#">
-              <i
-                className={`${Classes.fas} ${Classes.faPen} ${Classes.strokeTransparentBlue}`}
-              ></i>
-            </a>
-          </li>
-          <li>
-            <p className={Classes.tags}>
-              Workshop for Computer Science Teachers
-              <br />
-              <span>
-                IIT Kanpur | <span>July, 2014</span>
-              </span>
-            </p>
-            <a className={Classes.edit} href="#">
-              <i
-                className={`${Classes.fas} ${Classes.faPen} ${Classes.strokeTransparentBlue}`}
-              ></i>
-            </a>
-          </li>
+          {props.profileData.certificates
+            ? props.profileData.certificates.map((certificate) => {
+                <li>
+                  <p className={Classes.tags}>{certificate.name}</p>
+                </li>;
+              })
+            : ""}
         </ul>
         <a href="#">+ Add workshops attended</a>
       </div>
-      <div className={Classes.reviewsResSmallScreens}><Review /></div>
+      <div className={Classes.reviewsResSmallScreens}>
+        <Review reviews={props.reviews} />
+      </div>
     </div>
   );
 };

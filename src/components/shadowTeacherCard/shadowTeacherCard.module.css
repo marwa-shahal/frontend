@@ -37,10 +37,16 @@
   margin-left: 10px;
 }
 
-.teacherCardName span {
+.teacherCardName a{
   font-size: 16px;
   font-family: "Gyahegi", sans-serif;
   margin: 0 5px 5px 0px;
+  cursor: pointer;
+  color:black;
+  text-decoration: none;
+}
+.teacherCardName a:hover{
+  color:#ec663e
 }
 .teacherCardName {
   margin-bottom: 3px;
@@ -112,7 +118,7 @@
   padding: 12px 24px;
   border: 1px solid black;
   background-color: white;
-  color: black;
+  color: #131418;
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin: 10px;
@@ -135,8 +141,8 @@
 }
 
 .teacherCardReviewButton:hover {
-  border: 1px solid black;
-  background-color: black;
+  border: 1px solid #131418;
+  background-color: #131418;
   color: white;
 }
 .teacherCardMessageButton:hover {

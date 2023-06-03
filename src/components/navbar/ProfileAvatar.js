@@ -12,14 +12,13 @@ import Tooltip from "@mui/material/Tooltip";
 import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
-import CookieService from "../../services/cookie.service";
 import { Link } from "react-router-dom";
 
 export default function ProfileAvatar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const navigate = useNavigate();
 
-  const currentUser = CookieService.get("token");
+  const currentUser = JSON.parse(localStorage.getItem("userData"));
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -29,8 +28,8 @@ export default function ProfileAvatar(props) {
   };
 
   const handleProfile = () => {
-    if (currentUser.user.role === "Teacher") {
-      navigate("/teacherprofile");
+    if (currentUser.role === "Teacher") {
+      navigate(`/teacherprofile/${currentUser._id}`);
     } else {
       navigate("/profile");
     }
@@ -48,7 +47,7 @@ export default function ProfileAvatar(props) {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar sx={{ bgcolor: "black" }} variant="square"></Avatar>
+            <Avatar sx={{ bgcolor: "#131418" }} variant="square"></Avatar>
           </IconButton>
         </Tooltip>
       </Box>

@@ -9,7 +9,7 @@ import "./navbarnew.css";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
-  const currentUser = CookieService.get("token");
+  const currentUser = JSON.parse(localStorage.getItem("userData"));
   const { setUser } = useContext(AuthContext);
   console.log("token", currentUser);
   const toggleNavbar = () => {
@@ -22,7 +22,7 @@ const Navbar = () => {
     setUser(null);
     localStorage.removeItem("userData");
     CookieService.remove("token");
-    // navigate("/login");
+    navigate("/login");
   };
 
   return (
@@ -71,9 +71,9 @@ const Navbar = () => {
             </div>
           </li>
         ) : (
-          <>
+          <>  
             <li className={isOpen ? "fade" : ""} onClick={closeNavbar}>
-              <Link to={currentUser.user.role === "Teacher"? "/teacherprofile":"/profile"} className="registerRes">Profile</Link>
+              <Link to={currentUser.role === "Teacher"? `/teacherprofile/${currentUser._id}`:"/profile"} className="registerRes">Profile</Link>
             </li>
             <li className={isOpen ? "fade" : ""} onClick={closeNavbar}>
               <Link to="/login" className="registerRes" onClick = {handleLogout}>Logout</Link>

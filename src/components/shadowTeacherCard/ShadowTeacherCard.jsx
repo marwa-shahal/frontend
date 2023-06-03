@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Classes from "./shadowTeacherCard.module.css";
 import ReviewModal from "../modal/ReviewModal";
 import { FaGraduationCap } from "react-icons/fa";
@@ -62,7 +63,9 @@ const ShadowTeacherCard = ({
         <div className={Classes.teacherCardDetails}>
           <div className={Classes.teacherCardName}>
             <span>
-              {first_name} {last_name}
+              <Link to={`/teacherprofile/${_id}`}>
+                {first_name} {last_name}
+              </Link>{" "}
             </span>
             <span>
               <MdOutlineVerifiedUser />
@@ -121,7 +124,7 @@ const ShadowTeacherCard = ({
           >
             Review
           </button> */}
-          <ReviewModal  reviewer={_id} />
+          <ReviewModal reviewer={_id} />
           <button
             className={Classes.teacherCardMessageButton}
             onClick={handleSendMessage}

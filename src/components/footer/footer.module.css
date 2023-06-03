@@ -21,9 +21,8 @@
 }
  */
 
-section,
 .footer {
-  background: black;
+  background:  #131418;
   color: white;
 }
 
@@ -40,9 +39,7 @@ section,
   text-decoration: none;
   color: white;
   font-size: 11px;
-  /* padding-bottom: 20px; */
 }
-
 
 /* @media only screen and (max-width: 480px) {
     .footer p {

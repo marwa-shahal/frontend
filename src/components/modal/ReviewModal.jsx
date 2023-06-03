@@ -3,7 +3,6 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useLocation } from "react-router-dom";
-import AuthContext from "../../context/AuthContext";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Classes from "./modal.module.css";
@@ -21,7 +20,6 @@ const style = {
 
 export default function ReviewModal(props) {
   let location = useLocation();
-  console.log(location);
   const user = JSON.parse(localStorage.getItem("userData"));
   console.log(user);
   const [open, setOpen] = React.useState(false);
@@ -73,6 +71,7 @@ export default function ReviewModal(props) {
         <button
           className={Classes.teacherCardReviewButton}
           onClick={handleOpen}
+          disabled = {user?.role==="Teacher"}
         >
           Review
         </button>

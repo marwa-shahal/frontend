@@ -55,7 +55,6 @@
   font-weight: 400;
   font-size: 15px;
   margin: 0;
-
   padding: 0;
   border: 0;
   height: auto;
@@ -63,6 +62,11 @@
   color: #097bbf;
   outline: none;
   cursor: pointer;
+}
+.teacherProfielCardReviewBtn:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
 }
 
 /* @media only screen and (max-width: 480px) {

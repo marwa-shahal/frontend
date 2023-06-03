@@ -13,7 +13,6 @@ import Profile from "./pages/Profile/Profile";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import Footer from "./components/footer/Footer";
 
-
 function App() {
   return (
     <div className="App">
@@ -26,7 +25,8 @@ function App() {
         <Route path="/register" element={<Registration />} />
         <Route path="/login" element={<Login />} />
         <Route path="/contact-us" element={<ContactUs />} />
-        <Route path="/teacherprofile" element={<Profile />} />
+        {/* <Route path="/teacherprofile" element={<Profile />} /> */}
+        <Route path="/teacherprofile/:userId" element={<Profile />} />
         <Route path="/profile" element={<UserProfile />} />
       </Routes>
       <Footer />
