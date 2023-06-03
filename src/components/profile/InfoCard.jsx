@@ -2,11 +2,12 @@ import React from "react";
 import Classes from "./infoCard.module.css";
 import Review from "./Review";
 import AddExp from "../profileModals/AddExp";
+import AddCertificate from "../profileModals/AddCertificate";
 import { MdOutlineWorkOutline } from "react-icons/md";
 
 const InfoCard = (props) => {
   return (
-    <div className={Classes.infoCards }>
+    <div className={Classes.infoCards}>
       <div className={Classes.card}>
         <p>
           <MdOutlineWorkOutline />
@@ -20,10 +21,21 @@ const InfoCard = (props) => {
                     {exp.position}
                     <br />
                     {exp.description}
+                    <br />
                     <span>
                       {exp.company} |
                       <span>
-                        {exp.startDate} - {exp.endDate}
+                        {new Date(exp.startDate).toLocaleDateString("en-US", {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        })}{" "}
+                        -{" "}
+                        {new Date(exp.endDate).toLocaleDateString("en-US", {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        })}
                       </span>
                     </span>
                   </p>
@@ -34,7 +46,10 @@ const InfoCard = (props) => {
         {/* <a href="#">
           + Add work experience, including contracts and internships
         </a> */}
-        <AddExp />
+        <AddExp
+          updateTeacherProfileData={props.updateTeacherProfileData}
+          profileData={props.profileData}
+        />
       </div>
       <div className={Classes.card}>
         <p>
@@ -50,7 +65,10 @@ const InfoCard = (props) => {
               })
             : ""}
         </ul>
-        <a href="#">+ Add workshops attended</a>
+        <AddCertificate
+          updateTeacherProfileData={props.updateTeacherProfileData}
+          profileData={props.profileData}
+        />
       </div>
       <div className={Classes.reviewsResSmallScreens}>
         <Review reviews={props.reviews} />

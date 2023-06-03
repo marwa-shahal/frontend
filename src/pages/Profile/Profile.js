@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import CookieService from "../../services/cookie.service";
 import axios from "axios";
 import InfoCard from "../../components/profile/InfoCard";
@@ -10,8 +10,8 @@ function Profile() {
   const [profileData, setProfileData] = useState([]);
   const [reviews, setReviews] = useState([]);
   const { userId } = useParams();
-  console.log(userId)
-  const currentUser = JSON.parse(localStorage.getItem("userData"));;
+  console.log(userId);
+  const currentUser = JSON.parse(localStorage.getItem("userData"));
   // let teacherId;
   // if (currentUser && currentUser._id) {
   //   teacherId = currentUser._id;
@@ -35,7 +35,26 @@ function Profile() {
     }
   };
 
-  const fetchReviews= async () => {
+  const updateTeacherProfileData = async (updatedData) => {
+    const config = {
+      headers: {
+        Authorization: "Bearer " + CookieService.get("token"),
+      },
+    };
+    try {
+      const response = await axios.patch(
+        `https://edushadows-backend.onrender.com/user/${userId}`,
+        updatedData,
+        config
+      );
+      console.log("User data updated successfully: ", response.data);
+      setProfileData(response.data);
+    } catch (error) {
+      console.error("Error updating user data: ", error);
+    }
+  };
+
+  const fetchReviews = async () => {
     try {
       const response = await axios.get(
         `https://edushadows-backend.onrender.com/review/teacher/` + userId
@@ -55,8 +74,16 @@ function Profile() {
   return (
     <div className={Classes.profileContainer}>
       <div className={Classes.container}>
-        <AboutCard profileData={profileData} reviews={reviews} />
-        <InfoCard profileData={profileData} reviews={reviews} />
+        <AboutCard
+          profileData={profileData}
+          reviews={reviews}
+          updateTeacherProfileData={updateTeacherProfileData}
+        />
+        <InfoCard
+          profileData={profileData}
+          reviews={reviews}
+          updateTeacherProfileData={updateTeacherProfileData}
+        />
       </div>
     </div>
   );

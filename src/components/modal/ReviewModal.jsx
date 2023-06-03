@@ -44,6 +44,7 @@ export default function ReviewModal(props) {
       if (response.status === 200) {
         console.log(response);
         reset();
+        handleClose();
       } else {
         throw new Error("Failed to add review");
       }

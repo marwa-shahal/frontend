@@ -51,7 +51,9 @@ function FindTeachers() {
         console.log(error);
       });
   };
-
+  const updateData = () => {
+    
+  }
   useEffect(() => {
     // setLoading(true);
     getData();

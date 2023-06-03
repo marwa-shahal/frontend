@@ -17,7 +17,7 @@ const style = {
   p: 4,
 };
 
-export default function AddExp(props) {
+export default function AddCertificate(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -30,19 +30,15 @@ export default function AddExp(props) {
   } = useForm();
 
   const onSubmit = (data) => {
-    const newExperience = [
-      {
-        position: data.position,
-        description: data.description,
-        company: data.company,
-        startDate: data.startDate,
-        endDate: data.endDate,
-      },
-    ];
-    const updatedData = {
-      experience: newExperience,
+    const newCertificate = {
+      name: data.name,
+      issuingAuthority: data.issuingAuthority,
+      issueDate: data.issueDate,
     };
-    props.updateTeacherProfileData(updatedData);
+    const updatedData = {
+        certificates: [newCertificate],
+    };
+    props.updateTeacherProfileData(updatedData );
     handleClose();
     reset();
   };
@@ -50,7 +46,7 @@ export default function AddExp(props) {
   return (
     <div>
       <Button onClick={handleOpen}>
-        + Add work experience, including contracts and internships
+        + Add workshops attended and certificates attained
       </Button>
 
       <Modal
@@ -67,48 +63,37 @@ export default function AddExp(props) {
             <div className="fs-input">
               <input
                 type="text"
-                name="position"
-                {...register("position", { required: true })}
+                name="name"
+                {...register("name", { required: true })}
               />
-              <label className="fs-label" htmlFor="position">
-                Position
+              <label className="fs-label" htmlFor="name">
+                Name
               </label>
-              {errors.position && <span>This field is required</span>}
+              {errors.name && <span>This field is required</span>}
             </div>
             <div className="fs-input">
               <input
                 type="text"
-                name="description"
-                {...register("description", { required: true })}
+                name="issuingAuthority"
+                {...register("issuingAuthority", { required: true })}
               />
-              <label className="fs-label" htmlFor="description">
-                Description
+              <label className="fs-label" htmlFor="issuingAuthority">
+                Issuing Authority
               </label>
-              {errors.description && <span>This field is required</span>}
+              {errors.issuingAuthority && <span>This field is required</span>}
             </div>
             <div className="fs-input">
               <input
-                type="text"
-                name="company"
-                {...register("company", { required: true })}
+                type="date"
+                name="issueDate"
+                {...register("issueDate", { required: true })}
               />
-              <label className="fs-label" htmlFor="company">
-                Company
+              <label className="fs-label" htmlFor="issueDate">
+                Issue Date
               </label>
-              {errors.company && <span>This field is required</span>}
+              {errors.issueDate && <span>This field is required</span>}
             </div>
-            <div className="fs-input">
-              <input type="date" name="startDate" {...register("startDate")} />
-              <label className="fs-label" htmlFor="startDate">
-                Start Date
-              </label>
-            </div>
-            <div className="fs-input">
-              <input type="date" name="endDate" {...register("endDate")} />
-              <label className="fs-label" htmlFor="endDate">
-                End Date
-              </label>
-            </div>
+
             <input
               type="submit"
               name="submit"
