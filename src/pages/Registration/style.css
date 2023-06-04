@@ -269,6 +269,7 @@ p {
   .RegisterContainer {
     display: block;
     max-width: 100%;
+    min-height: 60vh;
   }
   #multistepsform {
     /* width: 600px; */

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 // import Cookie from 'universal-cookie';
-import CookieService from "../services/cookie.service";
+import CookieService from "../services/cookie.service.js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AuthContext from "./AuthContext";
@@ -69,7 +69,7 @@ const AuthProvider = ({ children }) => {
         CookieService.set("token", authenticatedUser.token);
         response.data.user.role === "Teacher"
           ?  navigate(`/teacherprofile/${response.data.user._id}`)
-          : navigate("/profile"); // Navigate to the profile page
+          : navigate(`/profile/${response.data.user._id}`); // Navigate to the profile page
       } else {
         toast.error("login failed");
         throw new Error("Login failed");

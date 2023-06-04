@@ -3,6 +3,7 @@
 }
 .findTeachersPage{
   margin: 8rem auto;
+  min-height: 60vh;
 }
 .findTeacherWrapper {
   /* align-items: flex-start; */

@@ -1,7 +1,7 @@
 /* CSS for Teacher Card */
 .teacherCard {
   padding: 15px;
-  width:600px;
+  width: 600px;
   height: 250px;
   display: flex;
   /* margin-bottom: 20px; */
@@ -13,7 +13,7 @@
   text-decoration: none;
   border: 1px solid black;
   z-index: 0;
-  box-shadow: 0 3px 10px 0 rgba(0,0,0,.1);
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
 }
 
 .teacherCardHeader {
@@ -37,16 +37,16 @@
   margin-left: 10px;
 }
 
-.teacherCardName a{
+.teacherCardName a {
   font-size: 16px;
   font-family: "Gyahegi", sans-serif;
   margin: 0 5px 5px 0px;
   cursor: pointer;
-  color:black;
+  color: black;
   text-decoration: none;
 }
-.teacherCardName a:hover{
-  color:#ec663e
+.teacherCardName a:hover {
+  color: #ec663e;
 }
 .teacherCardName {
   margin-bottom: 3px;
@@ -123,7 +123,7 @@
   transition: background-color 0.3s ease;
   margin: 10px;
   /* width: 130px; */
-  width:8rem;
+  width: 8rem;
 }
 /* #3F8F8B; */
 /* #118c4 */
@@ -136,7 +136,7 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin: 10px;
-  width:7rem;
+  width: 7rem;
   /* width: 130px; */
 }
 
@@ -148,7 +148,7 @@
 .teacherCardMessageButton:hover {
   /* border: 1px solid black; */
   background-color: white;
-  color:#ec663e;
+  color: #ec663e;
 }
 
 .Stars {
@@ -165,7 +165,7 @@
 
 .Stars::before {
   content: "★★★★★";
-  letter-spacing: 3px;
+  letter-spacing:3px;
   background: linear-gradient(
     90deg,
     var(--star-background) var(--percent),
@@ -175,8 +175,7 @@
   -webkit-text-fill-color: transparent;
 }
 
-
-.teacherInfoCard{
+.teacherInfoCard {
   padding: 15px;
   margin-bottom: 20px;
   /* align-items: flex-start;
@@ -187,13 +186,10 @@
   border: 1px solid black;
   z-index: 0;
 }
-
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1024px) {
   .teacherCard {
     padding: 15px;
     margin-bottom: 20px;
-    width:100%;
-    height:auto;
     display: flex;
     align-items: flex-start;
     gap: 2%;
@@ -202,7 +198,94 @@
   .teacherCardHeader {
     display: flex;
     flex-flow: row wrap;
-    width:100%;
+    /* flex-wrap: wrap; */
+    /* flex-direction: row; */
+  }
+
+  .teacherCardButtons {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .teacherCardButtons button {
+    margin-top: 0.5rem;
+  }
+  .teacherCardButtons {
+    margin: 5px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .teacherCard {
+    padding: 15px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 2%;
+  }
+
+  .teacherCardHeader {
+    display: flex;
+    flex-flow: row wrap;
+    /* flex-wrap: wrap; */
+    /* flex-direction: row; */
+  }
+
+  .teacherCardButtons {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .teacherCardButtons button {
+    margin-top: 0.5rem;
+  }
+  .teacherCardButtons {
+    margin: 5px;
+  }
+  /* Add this CSS to display the burger icon */
+  .navToggleIcon span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: #031424;
+    margin-bottom: 5px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .navToggleIcon span:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Rotate the top and bottom lines to create the burger icon effect */
+  .navToggle:checked + .navToggleIcon span:nth-child(1) {
+    transform: rotate(45deg) translate(2px, 2px);
+  }
+
+  .navToggle:checked + .navToggleIcon span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navToggle:checked + .navToggleIcon span:nth-child(3) {
+    transform: rotate(-45deg) translate(1px, -1px);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .teacherCard {
+    padding: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 2%;
+  }
+
+  .teacherCardHeader {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
     /* flex-wrap: wrap; */
     /* flex-direction: row; */
   }
@@ -241,18 +324,17 @@
     margin: 5px;
   }
   .teacherCardReviewButton,
-  .teacherCardMessageButton{
+  .teacherCardMessageButton {
     /* width:75%; */
-    width:7rem;
+    width: 7rem;
   }
 }
-
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 390px) {
   .teacherCard {
-    padding: 15px;
-    width:100%;
-    height:auto;
+    padding: 5px;
     margin-bottom: 20px;
+    width: 100%;
+    height: auto;
     display: flex;
     align-items: flex-start;
     gap: 2%;
@@ -261,8 +343,31 @@
   .teacherCardHeader {
     display: flex;
     flex-flow: row wrap;
+    width: 100%;
     /* flex-wrap: wrap; */
     /* flex-direction: row; */
+  }
+
+  .teacherCardLSection {
+    order: 1;
+    flex: 1 0 50%;
+  }
+
+  .teacherCardDetails {
+    order: 3;
+    flex: 1 0 200%;
+    margin-top: 0px;
+  }
+
+  .teacherCardRSection {
+    order: 2;
+    flex: 1 0 50%;
+    width: 150px;
+    display: block;
+    /* align-items: center;
+    justify-content: center;
+    flex-direction: column; */
+    margin-top: 0px;
   }
 
   .teacherCardButtons {
@@ -276,60 +381,26 @@
   .teacherCardButtons {
     margin: 5px;
   }
-  /* Add this CSS to display the burger icon */
-.navToggleIcon span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background-color: #031424;
-  margin-bottom: 5px;
-  transition: transform 0.3s ease-in-out;
-}
-
-.navToggleIcon span:last-child {
-  margin-bottom: 0;
-}
-
-/* Rotate the top and bottom lines to create the burger icon effect */
-.navToggle:checked + .navToggleIcon span:nth-child(1) {
-  transform: rotate(45deg) translate(2px, 2px);
-}
-
-.navToggle:checked + .navToggleIcon span:nth-child(2) {
-  opacity: 0;
-}
-
-.navToggle:checked + .navToggleIcon span:nth-child(3) {
-  transform: rotate(-45deg) translate(1px, -1px);
-}
-
-}
-
-@media only screen and (max-width: 1024px) {
-  .teacherCard {
-    padding: 15px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: flex-start;
-    gap: 2%;
+  .teacherCardReviewButton,
+  .teacherCardMessageButton {
+    /* width:75%; */
+    width: 6.5rem;
+    padding:12px 24px;
+    margin-left: 0px;
   }
-
-  .teacherCardHeader {
-    display: flex;
-    flex-flow: row wrap;
-    /* flex-wrap: wrap; */
-    /* flex-direction: row; */
+  .Stars {
+    --star-size: 21px;
+    --star-color: #ddd;
+    --star-background: #fc0;
+    --percent: calc(var(--rating) / 5 * 100%);
+    display: inline-block;
+    font-size: var(--star-size);
+    font-family: Times;
+    line-height: 1;
+    text-align: center;
   }
-
-  .teacherCardButtons {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .teacherCardButtons button {
-    margin-top: 0.5rem;
-  }
-  .teacherCardButtons {
-    margin: 5px;
+  .teacherCardReviews{
+    margin: 10px;
+    margin-left: 0px;
   }
 }

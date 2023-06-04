@@ -27,7 +27,7 @@ function App() {
         <Route path="/contact-us" element={<ContactUs />} />
         {/* <Route path="/teacherprofile" element={<Profile />} /> */}
         <Route path="/teacherprofile/:userId" element={<Profile />} />
-        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/profile/:userId" element={<UserProfile />} />
       </Routes>
       <Footer />
     </div>

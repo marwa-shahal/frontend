@@ -9,6 +9,8 @@ import "./navbarnew.css";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+  const existToken = CookieService.get("token");
+  console.log(existToken);
   const currentUser = JSON.parse(localStorage.getItem("userData"));
   const { setUser } = useContext(AuthContext);
   console.log("token", currentUser);
@@ -64,24 +66,35 @@ const Navbar = () => {
           </button>
         </li> */}
 
-        {!currentUser ? (
+        {!currentUser || !existToken ? (
           <li className={isOpen ? "fade" : ""} onClick={closeNavbar}>
             <div className="registerRes">
               <Link to="/register">Register</Link>
             </div>
           </li>
         ) : (
-          <>  
+          <>
             <li className={isOpen ? "fade" : ""} onClick={closeNavbar}>
-              <Link to={currentUser.role === "Teacher"? `/teacherprofile/${currentUser._id}`:"/profile"} className="registerRes">Profile</Link>
+              <Link
+                to={
+                  currentUser.role === "Teacher"
+                    ? `/teacherprofile/${currentUser._id}`
+                    : `/profile/${currentUser._id}`
+                }
+                className="registerRes"
+              >
+                Profile
+              </Link>
             </li>
             <li className={isOpen ? "fade" : ""} onClick={closeNavbar}>
-              <Link to="/login" className="registerRes" onClick = {handleLogout}>Logout</Link>
+              <Link to="/login" className="registerRes" onClick={handleLogout}>
+                Logout
+              </Link>
             </li>
           </>
         )}
       </ul>
-      {!currentUser ? (
+      {!currentUser || !existToken ? (
         <div className="register">
           <Link to="/register">Register</Link>
         </div>

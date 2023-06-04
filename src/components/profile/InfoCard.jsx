@@ -58,11 +58,28 @@ const InfoCard = (props) => {
         </p>
         <ul>
           {props.profileData.certificates
-            ? props.profileData.certificates.map((certificate) => {
-                <li>
-                  <p className={Classes.tags}>{certificate.name}</p>
-                </li>;
-              })
+            ? props.profileData.certificates.map((certificate) => (
+                <li key={certificate.id}>
+                  <p className={Classes.tags}>
+                    {certificate.name}
+                    <br />
+                    {certificate.issuingAuthority}{" "}
+                    <span>
+                      {certificate.company} |
+                      <span>
+                        {new Date(certificate.issueDate).toLocaleDateString(
+                          "en-US",
+                          {
+                            day: "numeric",
+                            month: "long",
+                            year: "numeric",
+                          }
+                        )}
+                      </span>
+                    </span>
+                  </p>
+                </li>
+              ))
             : ""}
         </ul>
         <AddCertificate

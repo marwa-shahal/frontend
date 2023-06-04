@@ -5,6 +5,7 @@ import { FaGraduationCap } from "react-icons/fa";
 import { MdLocationPin, MdOutlineVerifiedUser } from "react-icons/md";
 import { AiTwotoneMail } from "react-icons/ai";
 import Review from "./Review";
+import EditTeacherInfo from "../profileModals/EditTeacherInfo";
 
 const AboutCard = (props) => {
   return (
@@ -37,12 +38,17 @@ const AboutCard = (props) => {
 
       <p className={Classes.designation}>{props.profileData.description}</p>
 
-      <a className={Classes.editIntro} href="#">
+      {/* <a className={Classes.editIntro} href="#">
         <MdModeEdit /> edit
-      </a>
+      </a> */}
+      <EditTeacherInfo
+        updateTeacherProfileData={props.updateTeacherProfileData}
+        updateTeacherProfileAboutData = {props.updateTeacherProfileAboutData}
+        profileData={props.profileData}
+      />
       <hr className={Classes.horizontalLine} />
       <div className={Classes.reviewsResLargeScreens}>
-        <Review  reviews={props.reviews} />
+        <Review reviews={props.reviews} />
       </div>
       {/* <div className={Classes.about}>
         <p>About</p>

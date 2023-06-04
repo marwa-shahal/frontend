@@ -35,12 +35,35 @@ function Profile() {
     }
   };
 
+  const updateTeacherProfileAboutData = async (updatedData) => {
+    const config = {
+      headers: {
+        Authorization: "Bearer " + CookieService.get("token"),
+        "Content-Type": "multipart/form-data",
+      },
+    };
+    console.log(updatedData);
+    try {
+      const response = await axios.patch(
+        `https://edushadows-backend.onrender.com/user/${userId}`,
+        updatedData,
+        config
+      );
+      console.log("User data updated successfully: ", response.data);
+      setProfileData(response.data);
+    } catch (error) {
+      console.error("Error updating user data: ", error);
+    }
+  };
+
   const updateTeacherProfileData = async (updatedData) => {
     const config = {
       headers: {
         Authorization: "Bearer " + CookieService.get("token"),
+        // "Content-Type": "multipart/form-data",
       },
     };
+    console.log(updatedData);
     try {
       const response = await axios.patch(
         `https://edushadows-backend.onrender.com/user/${userId}`,
@@ -77,11 +100,13 @@ function Profile() {
         <AboutCard
           profileData={profileData}
           reviews={reviews}
+          updateTeacherProfileAboutData={updateTeacherProfileAboutData}
           updateTeacherProfileData={updateTeacherProfileData}
         />
         <InfoCard
           profileData={profileData}
           reviews={reviews}
+          updateTeacherProfileAboutData={updateTeacherProfileAboutData}
           updateTeacherProfileData={updateTeacherProfileData}
         />
       </div>

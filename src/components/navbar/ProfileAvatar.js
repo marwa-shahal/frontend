@@ -31,7 +31,7 @@ export default function ProfileAvatar(props) {
     if (currentUser.role === "Teacher") {
       navigate(`/teacherprofile/${currentUser._id}`);
     } else {
-      navigate("/profile");
+      navigate(`/profile/${currentUser._id}`);
     }
   };
 

@@ -38,7 +38,8 @@ export default function AddCertificate(props) {
     const updatedData = {
         certificates: [newCertificate],
     };
-    props.updateTeacherProfileData(updatedData );
+    console.log(updatedData);
+    props.updateTeacherProfileData(updatedData);
     handleClose();
     reset();
   };

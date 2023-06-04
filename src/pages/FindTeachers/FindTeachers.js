@@ -51,9 +51,7 @@ function FindTeachers() {
         console.log(error);
       });
   };
-  const updateData = () => {
-    
-  }
+  const updateData = () => {};
   useEffect(() => {
     // setLoading(true);
     getData();
@@ -100,7 +98,7 @@ function FindTeachers() {
         </div>
         <div className={`${Classes.filterItem} ${Classes.dropdown}`}>
           {/* <label htmlFor="country">Country</label> */}
-          <select
+          {/* <select
             id="country"
             className={Classes.select}
             onChange={handleAvailabilityChange}
@@ -110,13 +108,13 @@ function FindTeachers() {
                 {status}
               </option>
             ))}
-          </select>
+          </select> */}
         </div>
       </div>
       <div className={Classes.findTeacherWrapper}>
         <div className={Classes.lSide}>
           {console.log(data)}
-          {data.teachers ? (
+          {data.teachers && !Loading ? (
             <>
               {data.teachers.map((teacher) => {
                 return (
@@ -131,7 +129,7 @@ function FindTeachers() {
               /> */}
             </>
           ) : (
-            "no teachers available"
+            "Loading..."
           )}
         </div>
         {data.teachers ? (
