@@ -1,23 +1,59 @@
-import React, { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import React, { useEffect, useRef } from "react";
 import Classes from "./contactUs.module.css";
+import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function ContactUs() {
-  const { register, handleSubmit, formState: { errors } } = useForm();
-
-  const onSubmit = (data) => {
-    // Handle form submission
-    console.log(data);
-    
+  const form = useRef();
+  const resetForm = () => {
+    form.current.reset(); // Reset the form by calling the reset() method on the form's DOM element
   };
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        `${process.env.REACT_APP_EMAILJS_SERVICE_ID}`,
+        `${process.env.REACT_APP_EMAILJS_TEMPLATE_ID}`,
+        form.current,
+        `${process.env.REACT_APP_EMAILJS_PUBLIC_KEY}`
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          toast.success(
+            "Thank you for contacting us, we'll get back to you shortly!"
+          );
+          resetForm();
+        },
+        (error) => {
+          console.log(error.text);
+          toast.error(error.text);
+        }
+      );
+  };
+
+  // const onSubmit = (data) => {
+  //   // Handle form submission
+  //   console.log(data);
+
+  // };
 
   return (
     <div className={Classes.contactUs}>
       <div className={Classes.contactWrapper}>
+        <ToastContainer />
         <section className={Classes.getInTouch}>
           <p className={Classes.contactTitle}>Contact Us</p>
-          <p className={Classes.contactPar}>Don't hesitate, get in contact with us.</p>
-          <form className={`${Classes["contact-form"]} ${Classes.row}`} onSubmit={handleSubmit(onSubmit)}>
+          <p className={Classes.contactPar}>
+            Don't hesitate, get in contact with us.
+          </p>
+          <form
+            className={`${Classes["contact-form"]} ${Classes.row}`}
+            ref={form}
+            onSubmit={sendEmail}
+          >
             <div
               className={`${Classes["form-field"]} ${Classes.col} ${Classes["x-50"]}`}
             >
@@ -25,12 +61,10 @@ function ContactUs() {
                 id="name"
                 className={`${Classes["input-text"]} ${Classes["js-input"]}`}
                 type="text"
-                {...register('name', { required: true })}
               />
               <label className={Classes.label} htmlFor="name">
                 Name
               </label>
-              {errors.name && <span className={Classes.error_message}>Name is required</span>}
             </div>
             <div
               className={`${Classes["form-field"]} ${Classes.col} ${Classes["x-50"]}`}
@@ -39,12 +73,10 @@ function ContactUs() {
                 id="email"
                 className={`${Classes["input-text"]} ${Classes["js-input"]}`}
                 type="email"
-                {...register('email', { required: true })}
               />
               <label className={Classes.label} htmlFor="email">
                 E-mail
               </label>
-              {errors.email && <span className={Classes.error_message}>Invalid email address</span>}
             </div>
             <div
               className={`${Classes["form-field"]} ${Classes.col} ${Classes["x-100"]}`}
@@ -53,12 +85,10 @@ function ContactUs() {
                 id="message"
                 className={`${Classes["input-text"]} ${Classes["js-input"]}`}
                 type="text"
-                {...register('message', { required: true })}
               />
               <label className={Classes.label} htmlFor="message">
                 Message
               </label>
-              {errors.message && <span className={Classes.error_message}>Message is required</span>}
             </div>
             <div
               className={`${Classes["form-field"]} ${Classes.col} ${Classes["x-100"]} ${Classes["align-center"]}`}
@@ -78,4 +108,3 @@ function ContactUs() {
 }
 
 export default ContactUs;
-
