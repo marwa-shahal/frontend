@@ -12,6 +12,8 @@ import Login from "./pages/Registration/Login";
 import Profile from "./pages/Profile/Profile";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import Footer from "./components/footer/Footer";
+import Authentication from "./components/protectedRoutes/ProtectedRoutes";
+import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 function App() {
   return (
@@ -27,8 +29,18 @@ function App() {
         <Route path="/contact-us" element={<ContactUs />} />
         {/* <Route path="/teacherprofile" element={<Profile />} /> */}
         <Route path="/teacherprofile/:userId" element={<Profile />} />
-        <Route path="/profile/:userId" element={<UserProfile />} />
+        {/* <Route path="/profile/:userId" element={<UserProfile />} /> */}
+        <Route
+          path="/profile/:userId"
+          element={
+            <Authentication>
+              <UserProfile />
+            </Authentication>
+          }
+        />
+        <Route path="/*" element={<PageNotFound />} />
       </Routes>
+
       <Footer />
     </div>
   );
