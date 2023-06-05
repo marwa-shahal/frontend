@@ -203,7 +203,7 @@ export default function EditTeacherInfo(props) {
               type="submit"
               name="submit"
               className="submit action-button"
-              value="Edit Profile"
+              value="Edit"
             />
           </form>
         </Box>

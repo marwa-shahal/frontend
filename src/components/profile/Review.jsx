@@ -58,7 +58,12 @@ const Review = (props) => {
           ))}
         </ul>
         {/* <a href="#">+ Add review</a> */}
-        {currentUser.role !== "Teacher" ? <ReviewModal /> : ""}
+        {currentUser.role !== "Teacher" &&
+        props.profileData?._id !== currentUser._id ? (
+          <ReviewModal />
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

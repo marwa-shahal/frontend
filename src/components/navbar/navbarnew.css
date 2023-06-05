@@ -36,11 +36,14 @@ body {
 .logo {
   /* padding: 1vh 1vw; */
   text-align: center;
+  display: flex;
+  justify-content: center;
+  gap:5px;
 }
 
 .logo img {
-  height: 5rem;
-  width: 5rem;
+  height: 2.5rem;
+  width: 2.5rem;
 }
 
 /* Styling Links */

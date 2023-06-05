@@ -6,6 +6,7 @@ import AddCertificate from "../profileModals/AddCertificate";
 import { MdOutlineWorkOutline } from "react-icons/md";
 
 const InfoCard = (props) => {
+  const currentUser = JSON.parse(localStorage.getItem("userData"));
   return (
     <div className={Classes.infoCards}>
       <div className={Classes.card}>
@@ -46,10 +47,11 @@ const InfoCard = (props) => {
         {/* <a href="#">
           + Add work experience, including contracts and internships
         </a> */}
+         {props.profileData._id === currentUser._id? (
         <AddExp
           updateTeacherProfileData={props.updateTeacherProfileData}
           profileData={props.profileData}
-        />
+        />):""}
       </div>
       <div className={Classes.card}>
         <p>
@@ -82,13 +84,14 @@ const InfoCard = (props) => {
               ))
             : ""}
         </ul>
+        {props.profileData._id === currentUser._id? (
         <AddCertificate
           updateTeacherProfileData={props.updateTeacherProfileData}
           profileData={props.profileData}
-        />
+        />): ""}
       </div>
       <div className={Classes.reviewsResSmallScreens}>
-        <Review reviews={props.reviews} />
+      <Review reviews={props.reviews} profileData={props.profileData} />
       </div>
     </div>
   );

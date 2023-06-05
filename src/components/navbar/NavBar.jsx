@@ -5,7 +5,7 @@ import ProfileAvatar from "./ProfileAvatar.js";
 import AuthContext from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import "./navbarnew.css";
-
+import trace from "../../assets/trace.svg"
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ const Navbar = () => {
   return (
     <nav className="nav">
       <div className={`logo ${isOpen ? "open" : ""}`}>
-        {/* <img src="logo.svg" alt="Logo Image" /> */}
+        <img src={trace} alt="Logo Image" />
         <Link to="/" className="brandLink">
           EduShadows
         </Link>

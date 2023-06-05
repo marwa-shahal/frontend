@@ -1,0 +1,32 @@
+.teacherCardMessageButton {
+  padding: 12px 24px;
+  border: 1px solid #ec663e;
+  background-color: #ec663e;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+  width: 7rem;
+  /* width: 130px; */
+}
+
+.teacherCardMessageButton:hover {
+  /* border: 1px solid black; */
+  background-color: white;
+  color: #ec663e;
+}
+
+@media only screen and (max-width: 480px) {
+  .teacherCardMessageButton {
+    /* width:75%; */
+    width: 7rem;
+  }
+}
+@media only screen and (max-width: 390px) {
+  .teacherCardMessageButton {
+    /* width:75%; */
+    width: 6.5rem;
+    padding: 12px 24px;
+    margin-left: 0px;
+  }
+}

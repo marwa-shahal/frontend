@@ -6,13 +6,19 @@ import { MdLocationPin, MdOutlineVerifiedUser } from "react-icons/md";
 import { AiTwotoneMail } from "react-icons/ai";
 import Review from "./Review";
 import EditTeacherInfo from "../profileModals/EditTeacherInfo";
+import EditImage from "../profileModals/EditImage";
 
 const AboutCard = (props) => {
+  const currentUser = JSON.parse(localStorage.getItem("userData"));
   return (
     <div className={Classes.profile}>
       <div className={Classes.image}>
         {props.profileData.image ? (
-          <img src={props.profileData.image} alt="Profile-Image" />
+          <img
+            className={Classes.profilePhoto}
+            src={props.profileData.image}
+            alt="Profile-Image"
+          />
         ) : (
           <img
             className={Classes.profilePhoto}
@@ -21,6 +27,11 @@ const AboutCard = (props) => {
           />
         )}
       </div>
+      <EditImage
+        updateTeacherProfileData={props.updateTeacherProfileData}
+        updateTeacherProfileAboutData={props.updateTeacherProfileAboutData}
+        profileData={props.profileData}
+      />
       <p className={Classes.name}>
         {props.profileData.first_name} {props.profileData.last_name}
         <br />
@@ -43,13 +54,15 @@ const AboutCard = (props) => {
       </a> */}
       <EditTeacherInfo
         updateTeacherProfileData={props.updateTeacherProfileData}
-        updateTeacherProfileAboutData = {props.updateTeacherProfileAboutData}
+        updateTeacherProfileAboutData={props.updateTeacherProfileAboutData}
         profileData={props.profileData}
       />
       <hr className={Classes.horizontalLine} />
+
       <div className={Classes.reviewsResLargeScreens}>
         <Review reviews={props.reviews} />
       </div>
+
       {/* <div className={Classes.about}>
         <p>About</p>
         <a href="#">

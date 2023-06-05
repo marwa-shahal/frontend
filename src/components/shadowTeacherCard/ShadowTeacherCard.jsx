@@ -5,6 +5,7 @@ import ReviewModal from "../modal/ReviewModal";
 import { FaGraduationCap } from "react-icons/fa";
 import { MdLocationPin, MdOutlineVerifiedUser } from "react-icons/md";
 import { AiTwotoneMail } from "react-icons/ai";
+import MessageModal from "../message/Message";
 
 const ShadowTeacherCard = ({
   first_name,
@@ -36,19 +37,42 @@ const ShadowTeacherCard = ({
     setShowReviewModal(false);
   };
 
-  const handleSendMessage = () => {
-    // Implement the functionality to send a message to the teacher
-    // This could be done through a modal, a form, or an external messaging service
-    // You can use a state or a function to handle the message sending logic
-  };
+  // const mouseEnter = (event, element) => {
+  //   // element.style.transform = "rotateY(0deg) rotateX(0deg)";
+  //   element.style.boxShadow = "0 0 0 0 rgba(0,0,0,1)";
+  // };
+
+  // const mouseMove = (event, element) => {
+  //   const rect = element.getBoundingClientRect();
+  //   const offsetX = event.clientX - rect.left;
+  //   const offsetY = event.clientY - rect.top;
+  //   const width = rect.width;
+  //   const height = rect.height;
+  //   const ratio = 0.25;
+  //   const relativeOffsetX = ((offsetX * 100) / width) * ratio;
+  //   const relativeOffsetY = ((offsetY * 100) / height) * ratio;
+
+  //   // element.style.transform = `rotateY(${relativeOffsetX}deg) rotateX(${-relativeOffsetY}deg)`;
+  //   element.style.boxShadow = `${-relativeOffsetX}px ${-relativeOffsetY}px 0 0 rgba(0,0,0,1)`;
+  // };
+
+  // const mouseLeave = (element) => {
+  //   element.style.transform = "none";
+  //   element.style.boxShadow = "initial";
+  // };
 
   return (
-    <div className={Classes.teacherCard}>
+    <div
+      className={Classes.teacherCard}
+      // onMouseEnter={(event) => mouseEnter(event, event.currentTarget)}
+      // onMouseLeave={(event) => mouseLeave(event.currentTarget)}
+      // onMouseMove={(event) => mouseMove(event, event.currentTarget)}
+    >
       <div className={Classes.teacherCardHeader}>
         <div className={Classes.teacherCardLSection}>
           {image ? (
             <img
-              src={`http://localhost:5000/${image}`}
+              src={`${image}`}
               alt={first_name}
               className={Classes.teacherCardImage}
             />
@@ -125,12 +149,13 @@ const ShadowTeacherCard = ({
             Review
           </button> */}
           <ReviewModal reviewer={_id} />
-          <button
+          {/* <button
             className={Classes.teacherCardMessageButton}
             onClick={handleSendMessage}
           >
             Message
-          </button>
+          </button> */}
+          <MessageModal />
         </div>
       </div>
     </div>
