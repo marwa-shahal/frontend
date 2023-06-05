@@ -3,11 +3,13 @@ import "./style.css";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import AuthContext from "../../context/AuthContext";
+import arabicCities from "../../utils/cities";
+import countries from "../../utils/countries";
 
 const Registration = () => {
   const { signUp } = useContext(AuthContext);
   const { register, handleSubmit, reset } = useForm();
-
+  console.log("a", arabicCities);
   const onSubmit = (data) => {
     let userData;
     console.log(data);
@@ -58,15 +60,15 @@ const Registration = () => {
   //     console.error("Signup failed:", error.message);
   //   }
   // };
-  const countries = [
-    { code: "us", name: "United States" },
-    { code: "ca", name: "Canada" },
-    { code: "uk", name: "United Kingdom" },
-    { code: "fr", name: "France" },
-    { code: "de", name: "Germany" },
-    { code: "jp", name: "Japan" },
-    // Add more countries as needed
-  ];
+  // const countries = [
+  //   { code: "us", name: "United States" },
+  //   { code: "ca", name: "Canada" },
+  //   { code: "uk", name: "United Kingdom" },
+  //   { code: "fr", name: "France" },
+  //   { code: "de", name: "Germany" },
+  //   { code: "jp", name: "Japan" },
+  //   // Add more countries as needed
+  // ];
 
   const [isOpen, setIsOpen] = useState(false);
   const [result, setResult] = useState([]);
@@ -228,10 +230,10 @@ const Registration = () => {
                 <div className="fs-input">
                   {/* <textarea name="address"></textarea> */}
                   <select name="city" {...register("city")}>
-                    <option value="">Select Country</option>
-                    {countries.map((country) => (
-                      <option key={country.code} value={country.code}>
-                        {country.name}
+                    <option value="">Select City</option>
+                    {arabicCities.map((city) => (
+                      <option key={city} value={city}>
+                        {city}
                       </option>
                     ))}
                   </select>

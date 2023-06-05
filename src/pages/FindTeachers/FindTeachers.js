@@ -5,6 +5,7 @@ import ShadowTeacherCard from "../../components/shadowTeacherCard/ShadowTeacherC
 import ShadowTeacherInfoCard from "../../components/shadowTeacherCard/ShadowTeacherInfoCard";
 import Classes from "./findTeacher.module.css";
 import { AiOutlineSearch, AiFillCaretDown } from "react-icons/ai";
+import countries from "../../utils/countries";
 
 function FindTeachers() {
   const [query, setQuery] = useState("");
@@ -57,16 +58,6 @@ function FindTeachers() {
     getData();
   }, [query, country, page]);
 
-  const countries = [
-    { code: "", name: "Select country" },
-    { code: "us", name: "us" },
-    { code: "ca", name: "Canada" },
-    { code: "uk", name: "United Kingdom" },
-    { code: "fr", name: "France" },
-    { code: "de", name: "Germany" },
-    { code: "jp", name: "Japan" },
-    // Add more countries as needed
-  ];
   const avalibilty = ["full time", "part time", "unavailable"];
 
   return (

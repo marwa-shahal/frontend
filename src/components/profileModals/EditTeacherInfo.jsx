@@ -5,6 +5,8 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { MdModeEdit } from "react-icons/md";
 import Classes from "../profile/infoCard.module.css";
+import countries from "../../utils/countries";
+import arabicCities from "../../utils/cities";
 
 import { useForm } from "react-hook-form";
 
@@ -63,15 +65,15 @@ export default function EditTeacherInfo(props) {
     reset();
   };
 
-  const countries = [
-    { code: "us", name: "United States" },
-    { code: "ca", name: "Canada" },
-    { code: "uk", name: "United Kingdom" },
-    { code: "fr", name: "France" },
-    { code: "de", name: "Germany" },
-    { code: "jp", name: "Japan" },
-    // Add more countries as needed
-  ];
+  // const countries = [
+  //   { code: "us", name: "United States" },
+  //   { code: "ca", name: "Canada" },
+  //   { code: "uk", name: "United Kingdom" },
+  //   { code: "fr", name: "France" },
+  //   { code: "de", name: "Germany" },
+  //   { code: "jp", name: "Japan" },
+  //   // Add more countries as needed
+  // ];
 
   return (
     <div>
@@ -137,9 +139,9 @@ export default function EditTeacherInfo(props) {
                 {...register("city")}
               >
                 <option value="">Select Country</option>
-                {countries.map((country) => (
-                  <option key={country.code} value={country.code}>
-                    {country.name}
+                {arabicCities.map((city) => (
+                  <option key={city} value={city}>
+                    {city}
                   </option>
                 ))}
               </select>
@@ -177,8 +179,8 @@ export default function EditTeacherInfo(props) {
               </label>
             </div>
             {/* <div className="fs-input"> */}
-              {/* <input type="text" name="lang" />  */}
-              {/* <input
+            {/* <input type="text" name="lang" />  */}
+            {/* <input
                   type="file"
                   accept="image/*"
                   id="img-upload"
@@ -186,7 +188,7 @@ export default function EditTeacherInfo(props) {
                   required
                   {...register("image")}
                 /> */}
-              {/* <input
+            {/* <input
                 type="file"
                 accept="image/*"
                 id="img-upload"

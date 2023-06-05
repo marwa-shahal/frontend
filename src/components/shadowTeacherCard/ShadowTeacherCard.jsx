@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Classes from "./shadowTeacherCard.module.css";
 import ReviewModal from "../modal/ReviewModal";
@@ -25,6 +25,7 @@ const ShadowTeacherCard = ({
   languages,
   previous_cases,
   role,
+  reviews,
   _id,
 }) => {
   const [showReviewModal, setShowReviewModal] = useState(false);
@@ -36,6 +37,18 @@ const ShadowTeacherCard = ({
   const handleCloseModal = () => {
     setShowReviewModal(false);
   };
+  const [averageRate, setAverageRate] = useState(0);
+
+  useEffect(() => {
+    if (reviews.length > 0) {
+      const totalRate = reviews.reduce(
+        (total, review) => total + review.rating,
+        0
+      );
+      const averageRate = totalRate / reviews.length;
+      setAverageRate(averageRate);
+    }
+  }, [reviews]);
 
   // const mouseEnter = (event, element) => {
   //   // element.style.transform = "rotateY(0deg) rotateX(0deg)";
@@ -68,6 +81,7 @@ const ShadowTeacherCard = ({
       // onMouseLeave={(event) => mouseLeave(event.currentTarget)}
       // onMouseMove={(event) => mouseMove(event, event.currentTarget)}
     >
+      {console.log(averageRate)}
       <div className={Classes.teacherCardHeader}>
         <div className={Classes.teacherCardLSection}>
           {image ? (
@@ -114,12 +128,6 @@ const ShadowTeacherCard = ({
             <span className={Classes.teacherCardCertification}>
               {education}
             </span>
-            {/* {certifications.map((certification, index) => (
-              <span className={Classes.teacherCardCertification} key={index}>
-                {certification}
-              </span>
-            ))} */}
-            {/* <span className={Classes.teacherCardIcon}>{profession}</span> */}
           </div>
           <div className={Classes.teacherCardIcons}>
             Speaks:{" "}
@@ -137,7 +145,7 @@ const ShadowTeacherCard = ({
         <div className={Classes.teacherCardReviews}>
           <div
             className={Classes.Stars}
-            Style="--rating: 3.5;"
+            style={{ "--rating": averageRate }}
             aria-label="Rating of this product is 2.3 out of 5."
           ></div>
         </div>

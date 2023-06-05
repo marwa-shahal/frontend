@@ -2,7 +2,7 @@ import * as React from "react";
 import { useState, useContext } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Classes from "./modal.module.css";
@@ -20,10 +20,17 @@ const style = {
 
 export default function ReviewModal(props) {
   let location = useLocation();
+  const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("userData"));
   console.log(user);
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {
+    if (user) {
+      setOpen(true);
+    } else {
+      navigate("/login");
+    }
+  };
   const handleClose = () => setOpen(false);
 
   const { register, handleSubmit, errors, reset } = useForm();
@@ -66,13 +73,16 @@ export default function ReviewModal(props) {
   return (
     <div>
       {/* <Button onClick={handleOpen}>Open modal</Button> */}
-      {location.pathname === "/teacherprofile" ? (
-        <p className={Classes.teacherProfielCardReviewBtn} onClick={handleOpen}> +Add a review </p>
+      {location.pathname === "/teacherprofile/:id" ? (
+        <p className={Classes.teacherProfielCardReviewBtn} onClick={handleOpen}>
+          {" "}
+          +Add a review{" "}
+        </p>
       ) : (
         <button
           className={Classes.teacherCardReviewButton}
           onClick={handleOpen}
-          disabled = {user?.role==="Teacher"}
+          disabled={user?.role === "Teacher"}
         >
           Review
         </button>
