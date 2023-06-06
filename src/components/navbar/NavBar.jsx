@@ -5,7 +5,7 @@ import ProfileAvatar from "./ProfileAvatar.js";
 import AuthContext from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import "./navbarnew.css";
-import trace from "../../assets/trace.svg"
+import trace from "../../assets/trace.svg";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
@@ -51,9 +51,9 @@ const Navbar = () => {
         <li className={isOpen ? "fade" : ""} onClick={closeNavbar}>
           <Link to="/find-teachers">Find Shadow Teachers</Link>
         </li>
-        <li className={isOpen ? "fade" : ""}>
+        {/* <li className={isOpen ? "fade" : ""}>
           <Link to="/job-news">JobNews</Link>
-        </li>
+        </li> */}
         {/* <li className={isOpen ? "fade" : ""}>
           <Link to="/events-webinars">Events&Webinars</Link>
         </li> */}
