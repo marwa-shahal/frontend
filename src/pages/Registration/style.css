@@ -50,7 +50,7 @@ input:-webkit-autofill {
 #multistepsform textarea:focus {
   /* border-color: #679b9b; */
   outline: none;
-  color: #637373;
+  /* color: #637373; */
 }
 
 #multistepsform .action-button {
@@ -67,6 +67,11 @@ input:-webkit-autofill {
   padding: 10px 15px;
   margin: 10px 15px;
 }
+#multistepsform .action-button:hover {
+  background: white;
+  color: #ec663e;
+  border: 1px solid #ec663e;
+}
 #multistepsform .edit-button {
   width: 100px;
   font-family: "URW Geometric", sans-serif;
@@ -81,7 +86,6 @@ input:-webkit-autofill {
   padding: 15px 20px;
   margin: 10px 15px;
 }
-
 
 #multistepsform .fs-title {
   font-size: 16px;
@@ -389,7 +393,7 @@ p {
   max-height: 223px;
   overflow-y: auto;
   background: #fff; */
-  
+
   z-index: 10;
 }
 
